@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+   <meta charset="UTF-8">
+   <title>Exemplo de inputs</title>
+</head>
+
+<body>
+<form>
+<p>
+  <label>Nome</label>
+  <input type='text' />
+</p>
+<p>
+  <label>Senha</label>
+  <input type='password' />
+</p>
+
+<p>
+  <label>Data de nascimento</label>
+  <input type='date'/>
+</p>
+<p>
+  <label>Tem celular?</label><br />
+  <input id='sim' type=radio name='celular' value='sim'/>
+  <label for='sim' >Sim</label>
+  <input id='nao' type=radio name='celular' value='não'/>
+  <label for='nao'>Não</label>
+</p>
+
+<p>
+  <label>Hobbies</label><br />
+  <label for='ler'>Ler</label>
+  <input type='checkbox' value='ler' id='ler'  />
+  <br />
+  <label for='jogar'>Jogar</label>
+  <input type='checkbox' value='jogar' id='jogar'  />
+  <br />
+  <label for='cantar'>Cantar</label>
+  <input type='checkbox' value='cantar' id='cantar'  />
+</p>
+<p>
+  <label>Idade</label>
+  <input type='range' id='enviar' min='0' max='150' oninput='resultado.value = enviar.value'/><br />
+  <input type='text' id='resultado'>
+</p>
+<p>
+  <input type='reset' value='resetar'/>
+</p>
+<p>
+  <input type='submit' value='confirmar'/>
+</p>
+</form>
+</body>
+</html>

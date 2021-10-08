@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+   <meta charset="UTF-8">
+   <title>Formulario</title>
+</head>
+
+<body>
+    <form style='background-color: rgb(230, 228, 228);' >
+        
+        <fieldset>
+            <legend>Dados pessoais</legend>
+            <p>
+                <label>Nome</label><br />
+                <input type='text' />
+            </p>
+            <p>
+                <label>Senha</label><br />
+                <input type='password' />
+            </p>
+
+            <p>
+                <label>Data de nascimento</label><br />
+                <input type='date'/>
+            </p>
+            
+            <p>
+                <label>Idade</label><br />
+                <input type='range' id='enviar' min='0' max='150' oninput='resultado.value = enviar.value'/><br />
+                <input type='text' id='resultado'>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend >Contatos</legend>
+            <p>
+                <label for='email'>Email</label><br />
+                <input id='email' type='email' />
+            </p>
+            <p>
+                <label for='linkedin'>Linkedin</label><br />
+                <input id='linkedin' type='url' />
+            </p>
+            <p>
+                <label for='telefone'>Telefone</label><br />
+                <input id='telefone' type='tel' />
+            </p>
+            
+
+        </fieldset>
+        <fieldset>
+            <legend>Informações adicionais</legend>
+            <p>
+                <label>Tem celular?</label><br />
+                <input id='sim' type=radio name='celular' value='sim'/>
+                <label for='sim' >Sim</label>
+                <input id='nao' type=radio name='celular' value='não'/>
+                <label for='nao'>Não</label>
+            </p>
+            <p>
+                <label>Tem notebook/computador?</label><br />
+                <input id='sim1' type=radio name='notebook' value='sim'/>
+                <label for='sim1' >Sim</label>
+                <input id='nao1' type=radio name='notebook' value='não'/>
+                <label for='nao1'>Não</label>
+            </p>
+            
+            <p>
+                <label>Acesso a internet?</label><br />
+                <input id='sim2' type=radio name='internet' value='sim'/>
+                <label for='sim2' >Sim</label>
+                <input id='nao2' type=radio name='internet' value='não'/>
+                <label for='nao2'>Não</label>
+            </p>
+            
+            <p>
+                <label>Caso tenha acesso a internet você utiliza dela para estudo?</label><br />
+                <input id='sim3' type=radio name='estudo' value='sim'/>
+                <label for='sim3' >Sim</label>
+                <input id='nao3' type=radio name='estudo' value='não'/>
+                <label for='nao3'>Não</label>
+            </p>
+            
+            <p>
+                <label>Hobbies</label><br />
+                <input type='checkbox' value='ler' id='ler'  />
+                <label for='ler'>Ler</label><br />
+                
+                <input type='checkbox' value='jogar' id='jogar'  />
+                <label for='jogar'>Jogar</label><br />
+
+                <input type='checkbox' value='cantar' id='cantar'  />
+                <label for='cantar'>Cantar</label><br />
+                
+                <input type='checkbox' value='assistir' id='assistir'  />
+                <label for='assistir'>Ver series/filmes e videos</label>
+                
+            </p>
+            <p>
+                <label for='definição' >O que é estudar para você?</label><br />
+                <input id='definição'type="text" >
+            </p>
+
+        </fieldset>
+            <input style='margin:10px;margin-left:25%;font-size: 20px;'  type='reset' value='Resetar'/>
+            <input style='margin:10px;margin-left:25%;font-size: 20px;' type='submit' value='Confirmar'/>
+        
+    </form>
+</body>
+</html>
