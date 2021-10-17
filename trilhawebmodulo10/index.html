@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<canvas id="myCanvas"></canvas>
+<button id='bt'>Aqui</button>
+<button id='btA'>Animação</button>
+<audio id="audio">
+    <source src="./som.mp3" type="audio/mp3">
+    Seu navegador não possui suporte ao elemento audio
+</audio>
+
+
+<script>
+var canvas = document.querySelector("#myCanvas")
+var btA =document.querySelector("#btA"); 
+var bt = document.querySelector("#bt");
+var c = canvas.getContext('2d');
+
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+
+
+bt.addEventListener('click',bolasPorAi)
+btA.addEventListener('click',animacao)
+
+
+const numeroDeEstrelas = 100;
+var estrelinha = new estrela(100,100,50,"blue",0)
+estrelinha.mostrar()
+var Estrelas = [];
+
+for(let i=0;i<numeroDeEstrelas;i++){
+    var tamanho = 30;
+    var y = Math.random() * (innerHeight - tamanho *2) + tamanho 
+    var x = Math.random() * (innerWidth-tamanho *2) + tamanho
+    var cor = sortearCor()
+    Estrelas.push(new estrela(x,y,tamanho,cor))
+}
+
+function estrela(x,y,tam,cor){
+    this.x = x;
+    this.y = y;
+    this.tam = tam;
+    this.cor = cor;
+    this.i = 0;
+    this.dx = 1;
+    this.dy = 1;
+    this.ter = this.tam/3
+    this.delta = (Math.sqrt(4*quadrado(this.ter)))/this.tam
+    this.mostrar = function(){
+        c.beginPath();
+        c.moveTo(this.x+this.i,this.y+this.tam-this.i);
+        c.lineTo(this.x+this.ter,this.y+this.ter-this.i*this.delta);;
+        c.lineTo(this.x+this.tam-this.i,this.y-this.i);
+        c.lineTo(this.x+this.ter-this.i*this.delta,this.y-this.ter);;
+        c.lineTo(this.x-this.i,this.y-this.tam+this.i);
+        c.lineTo(this.x-this.ter,this.y-this.ter+this.i*this.delta);;
+        c.lineTo(this.x-this.tam+this.i,this.y+this.i);
+        c.lineTo(this.x-this.ter+this.i*this.delta,this.y+this.ter);;
+        c.fillStyle =this.cor
+        c.fill();  
+    }
+    this.atualizar = function (){
+        if(this.x + this.tam > innerWidth || this.x-this.tam < 0){
+            this.dx = -this.dx
+        }
+        if(this.y + this.tam > innerHeight || this.y-this.tam < 0){
+            this.dy = -this.dy
+        }
+        if(this.i < this.tam){
+            this.i ++
+        }
+        else{
+            this.i = 0;
+        }
+        
+        this.x += this.dx;
+        this.y += this.dy;
+        this.mostrar()
+        
+    }
+}
+
+function vaiEstrelas(){
+    c.clearRect(0,0,innerWidth,innerHeight)
+    requestAnimationFrame(vaiEstrelas);
+    for(let a=0;a<numeroDeEstrelas;a++)
+    {
+        Estrelas[a].atualizar()
+    }
+}
+vaiEstrelas()
+function criarEstrela(x,y,tam){
+    var ter = tam/3;
+    c.beginPath();
+    c.moveTo(x,y+tam);
+    c.lineTo(x+ter,y+ter);
+    c.lineTo(x+tam,y);
+    c.lineTo(x+ter,y-ter);
+    c.lineTo(x,y-tam);
+    c.lineTo(x-ter,y-ter);
+    c.lineTo(x-tam,y);
+    c.lineTo(x-ter,y+ter);
+    c.fillStyle ='red'
+    c.fill();
+}
+
+function quadrado(n){
+    return n*n;
+}
+function criar(x,y,tam,i,cor){
+      var ter = tam/3;
+      c.clearRect(0,0,innerWidth,innerHeight)
+      c.beginPath();
+      var delta = (Math.sqrt(4*quadrado(ter)))/tam
+      c.moveTo(x+i,y+tam-i);
+      c.lineTo(x+ter,y+ter-i*delta);;
+      c.lineTo(x+tam-i,y-i);
+      c.lineTo(x+ter-i*delta,y-ter);;
+      c.lineTo(x-i,y-tam+i);
+      c.lineTo(x-ter,y-ter+i*delta);;
+      c.lineTo(x-tam+i,y+i);
+      c.lineTo(x-ter+i*delta,y+ter);;
+      c.fillStyle =cor
+      c.fill();
+}
+function animacaoa(tam,voltas){
+    for(let k=0;k<voltas;k++){
+        for(let i=0;i<tam;i++){    
+            setTimeout(criar,1000,500,400,tam,i,'red')
+        }
+    } 
+}
+//animacaoa(350,1000)
+
+var mouse = {
+    x : undefined,
+    y : undefined
+}
+var circleArray = [];
+
+window.addEventListener('mousemove',
+    function(event){
+        mouse.x = event.x;
+        mouse.y = event.y;
+    }
+)
+window.addEventListener('resize',function(){    
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+})
+
+for(let i=0;i<400;i++){
+    let radius = 10;
+    var y = Math.random() * (innerHeight - radius *2) + radius 
+    var x= Math.random() * (innerWidth-radius *2) + radius
+    var dx = (Math.random() - 0.5) *4
+    var dy = (Math.random() - 0.5) *4
+    var cor = sortearCor()
+    circleArray.push(new Circle(x,y,radius,dx,dy,cor))
+}
+
+function sortearCor(){
+	let a = Math.ceil(Math.random()*256)
+    let b = Math.ceil(Math.random()*256)
+    let ac = Math.ceil(Math.random()*256)
+    let d = 'rgb('+a +"," + b +","+ac+")"
+  
+  return d;
+}
+function criarBola(x,y,r,d){
+		c.beginPath()
+    c.arc(x,y,r,0,Math.PI*2,false)
+   c.strokeStyle = d;
+   c.stroke();
+
+}
+
+function bolasPorAi()
+{
+    for(var i=0;i<100;i++){
+		for(var l=0;l<100;l++)
+            {
+                criarBola(i*30,l*30,30,'red')
+            }
+}
+}
+
+function animacao(){
+    c.clearRect(0,0,innerWidth,innerHeight)
+    requestAnimationFrame(animacao);
+    for(let r=0;r<400;r++)
+    {
+        circleArray[r].update()
+    }
+
+}
+audio = document.getElementById('audio');
+    function reproduzir(urlMusica){
+        audio.src = urlMusica;
+        audio.play();
+
+    }
+function Circle(x,y,raio,dx,dy,cor){
+    this.x = x;
+    this.y = y;
+    this.cor = cor;
+    this.raio = raio;
+    this.dx = dx;
+    this.dy = dy;
+    this.min=raio;
+    this.draw = function (){
+        c.beginPath()
+        c.arc(this.x,this.y,this.raio,0,Math.PI*2,false)
+        c.strokeStyle = this.cor;
+        c.fillStyle = this.cor;
+        c.fill()
+        c.stroke();
+    }
+    this.update = function()
+    {
+        if(this.x+this.raio  > innerWidth|| this.x-this.raio < 0){
+            this.dx = -this.dx
+            //reproduzir('./som.mp3')
+        }
+        if(this.y+this.raio > innerHeight || this.y-this.raio < 0){
+            this.dy = -this.dy
+        }
+        this.x+=this.dx;
+        this.y+=this.dy;
+        if(mouse.x - this.x < 50 && mouse.x -this.x > -50
+            && mouse.y - this.y < 50 && mouse.y -this.y > -50){
+            if(this.raio < 50){
+                this.raio +=2;
+            }
+        }else if(this.raio > 10){
+                this.raio --;
+        }
+
+        this.draw()  
+    }
+    
+}
+    </script>
+</body>
+</html>

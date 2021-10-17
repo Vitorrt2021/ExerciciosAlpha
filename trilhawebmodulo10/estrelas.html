@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrelas</title>
+</head>
+<body style='margin:0;padding: 0;'>
+    
+<canvas style='background-color: black;'id="Canvas"></canvas>
+
+
+<script>
+var canvas = document.querySelector("#Canvas")
+var c = canvas.getContext('2d');
+
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+var mouse = {
+    x : undefined,
+    y : undefined
+}
+
+window.addEventListener('mousemove',
+    function(event){
+        mouse.x = event.x;
+        mouse.y = event.y;
+    }
+)
+const NumeroDeEstrelas = 100
+var Estrelas = criarArray(NumeroDeEstrelas);
+vaiEstrelas()
+
+function criarArray()
+{
+    var Estrelas = [];
+    for(let i=0;i<NumeroDeEstrelas;i++){
+        var tamanho = 20;
+        var y = Math.random() * (innerHeight - tamanho *2) + tamanho 
+        var x = Math.random() * (innerWidth-tamanho *2) + tamanho
+        var dx = (Math.random() - 0.5) *4
+        var dy = (Math.random() - 0.5) *4
+        var cor = sortearCor()
+        Estrelas.push(new estrela(x,y,tamanho,cor,dx,dy))
+    }
+    return Estrelas;
+}
+function estrela(x,y,tam,cor,dx,dy){
+    this.x = x;
+    this.y = y;
+    this.tam = tam;
+    this.cor = cor;
+    this.i = 0;
+    this.dx = dx;
+    this.dy = dy
+    this.ter = this.tam/3
+    this.delta = (Math.sqrt(4*quadrado(this.ter)))/this.tam
+    this.mostrar = function(){
+        c.beginPath();
+        c.moveTo(this.x+this.i,this.y+this.tam-this.i);
+        c.lineTo(this.x+this.ter,this.y+this.ter-this.i*this.delta);;
+        c.lineTo(this.x+this.tam-this.i,this.y-this.i);
+        c.lineTo(this.x+this.ter-this.i*this.delta,this.y-this.ter);;
+        c.lineTo(this.x-this.i,this.y-this.tam+this.i);
+        c.lineTo(this.x-this.ter,this.y-this.ter+this.i*this.delta);;
+        c.lineTo(this.x-this.tam+this.i,this.y+this.i);
+        c.lineTo(this.x-this.ter+this.i*this.delta,this.y+this.ter);;
+        c.fillStyle =this.cor
+        c.fill();  
+    }
+    this.atualizar = function (){
+        if(this.x + this.tam > innerWidth || this.x-this.tam < 0){
+            this.dx = -this.dx
+        }
+        if(this.y + this.tam > innerHeight || this.y-this.tam < 0){
+            this.dy = -this.dy
+        }
+        if(this.i < this.tam){
+            this.i ++
+        }
+        else{
+            this.i = 0;
+        }
+        if(mouse.x - this.x < 40 && mouse.x -this.x > -40
+            && mouse.y - this.y < 40 && mouse.y -this.y > -40){
+            if(this.tam < 40){
+                this.tam +=2;
+                this.ter = this.tam/3
+                 this.delta = (Math.sqrt(4*quadrado(this.ter)))/this.tam
+   
+            }
+        }else if(this.tam > 20){
+                this.tam --;
+                this.ter = this.tam/3
+                 this.delta = (Math.sqrt(4*quadrado(this.ter)))/this.tam
+        }
+        this.x += this.dx;
+        this.y += this.dy;
+        this.mostrar()
+        
+    }
+}
+
+function vaiEstrelas(){
+    c.clearRect(0,0,innerWidth,innerHeight)
+    requestAnimationFrame(vaiEstrelas);
+    for(let a=0;a<NumeroDeEstrelas;a++)
+    {
+        Estrelas[a].atualizar()
+    }
+}
+
+function quadrado(n){
+    return n*n;
+}
+
+window.addEventListener('resize',function(){    
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+})
+
+function sortearCor(){
+    let a = Math.floor(Math.random()*5)
+    let cor = ['#264653','#2a9d8f','#e9c46a','#f4a261','#e76f51']
+    return cor[a];
+}
+    </script>
+</body>
+</html>

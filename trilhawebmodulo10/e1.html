@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio</title>
+</head>
+<body>
+    <canvas id='Canvas'> </canvas>
+    <h1>Bandeira Africa do Sul</h1>
+    
+
+    <script>
+    var canvas = document.querySelector("#Canvas")
+    var c = canvas.getContext('2d');
+    
+    
+    canvas.width = 800
+    canvas.height = 600
+    
+    function criarRetangulo(x,y,l,com,d)
+    {
+        c.fillStyle =d
+        c.fillRect(x,y,l,com);
+    }
+    function criarTriangulo(a,b,ca,d,e,f,cor) {
+        c.beginPath();
+        c.moveTo(a,b);
+        c.lineTo(ca,d);
+        c.lineTo(e,f);
+        c.fillStyle =cor
+        c.fill();
+    }
+    function criarLinha(x1,y1,x2,y2){
+        //Criando uma linha
+        c.beginPath();
+        //inicio
+        c.moveTo(x1,y1);
+        //fim
+        c.lineTo(x2,y2);
+        //iniciar
+        c.stroke()
+    } 
+    function criarRed(){
+        c.beginPath();
+        c.moveTo(60,0);
+        c.lineTo(800,0);
+        c.lineTo(800,220);
+        c.lineTo(420,220);
+        c.fillStyle = 'red'
+        c.fill();
+    }
+    function criarBlue(){
+        c.beginPath()
+        c.moveTo(60,600)
+        c.lineTo(420,380)
+        c.lineTo(800,380)
+        c.lineTo(800,600)
+        c.fillStyle = 'blue'
+        c.fill()
+    }
+    function AfricaDoSul()
+    {
+        criarRetangulo(0,0,800,600,'white')
+        criarTriangulo(-10,-10,500,300,-10,610,'green')
+        criarRetangulo(400,250,800,100,'green')
+        criarTriangulo(0,80,340,300,0,520,'yellow')
+        criarTriangulo(0,120,290,300,0,480,'black')
+        criarRed()
+        criarBlue()
+    }
+    AfricaDoSul()
+    </script>
+</body>
+</html>
