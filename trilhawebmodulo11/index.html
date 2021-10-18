@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 1</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body style='display: flex; background-color: gray; justify-content: center;'>
+    <div id='inline' style='
+        width:400px;
+        height: 400px;
+        background-color: bisque;
+        border: solid 5px black;
+        text-align: center;
+        '>
+        <h1>CSS inline</h1>
+    </div>
+
+    <div id='internal'>
+        <h1>CSS internal</h1>
+    </div>
+
+    <div id='external'>
+        <h1>CSS external</h1>
+    </div>
+    <style>
+        #internal{
+            background-color: violet;
+            width: 400px;
+            height: 400px;
+            text-align: center;
+            border: solid 5px black;
+        }
+        </style>
+</body>
+</html>

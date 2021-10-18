@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colições</title>
+</head>
+<body>
+    <canvas id='Canvas'></canvas>
+
+</body>
+    <script>
+                
+        var canvas = document.querySelector("#Canvas")
+        var c = canvas.getContext('2d');
+
+
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+
+        var mouse = {
+            x : undefined,
+            y : undefined
+        }
+        
+        
+        window.addEventListener('mousemove',
+            function(event){
+                mouse.x = event.x;
+                mouse.y = event.y;
+            }
+        )
+        window.addEventListener('resize',function(){    
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+        })
+        function quadrado(n){
+            return n * n;
+        }
+        function aleatorio(min,max){
+            return Math.floor(Math.random() + (max-min+1) + min);
+        }
+        function sortearCor(){
+            let a = Math.floor(Math.random()*5)
+            let cor = ['#264653','#2a9d8f','#e9c46a','#f4a261','#e76f51']
+            return cor[a];
+        }
+        function distanciaPontos(x1,y1,x2,y2){
+            let disX = x2-x1
+            let disY = y2-y1
+            disX = quadrado(disX)
+            disY = quadrado(disY)
+            return Math.sqrt(disX+disY)
+        }
+        function bola(x,y,raio,cor,dx,dy){
+            this.x = x;
+            this.y = y;
+            this.raio = raio;
+            this.cor = cor;
+            this.dx = dx;
+            this.dy = dy;
+            this.aparecer = function (){
+                c.beginPath()
+                c.arc(this.x,this.y,this.raio,0,Math.PI*2,false);
+                c.fillStyle = this.cor;
+                c.fill();
+                c.closePath();
+            }
+           this.atualizar = function (){  
+                if(this.x + this.raio > innerWidth || this.x-this.raio < 0){
+                    this.dx = -this.dx
+                }
+                if(this.y + this.raio > innerHeight || this.y-this.raio < 0){
+                    this.dy = -this.dy
+                }
+            //    if(distanciaPontos(mouse.x,mouse.y,this.x,this.y) < 5){
+              //      console.log('perdeu')
+                //    console.log(distanciaPontos(mouse.x,mouse.y,this.x,this.y))
+                //}
+                this.x += this.dx
+                this.y += this.dy
+                this.aparecer()
+
+            }
+        }
+
+                
+        const NumeroDeBolas = 20;
+        var arrayBolas = criarArray()
+
+        function criarArray()
+        {
+            var Bolas = [];
+            for(let i=0;i<NumeroDeBolas;i++){
+                var tamanho = 10;
+                var y = Math.random() * (innerHeight - tamanho *2) + tamanho 
+                var x = Math.random() * (innerWidth-tamanho *2) + tamanho
+                var dx = (Math.random() - 0.5) *4
+                var dy = (Math.random() - 0.5) *4
+                var cor = sortearCor()
+                Bolas.push(new bola(x,y,tamanho,cor,dx,dy))
+            }
+            return Bolas;
+        }
+
+
+        function animacao(){         
+            var b1 = new bola(mouse.x,mouse.y,10,'red',0,0)
+            c.clearRect(0,0,innerWidth,innerHeight)
+            requestAnimationFrame(animacao);
+            for(let a=0;a<NumeroDeBolas;a++){
+                arrayBolas[a].atualizar()
+            }
+            b1.atualizar()
+        }
+        animacao()
+    </script>
+</html>

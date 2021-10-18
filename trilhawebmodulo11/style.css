@@ -1,0 +1,11 @@
+body{
+    background-color: gray;
+}
+#external{
+    background-color:blue;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    border: solid 5px black;
+
+}
