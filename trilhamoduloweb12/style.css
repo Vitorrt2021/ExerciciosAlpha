@@ -39,6 +39,10 @@ label::first-letter{
     color: rgb(246, 248, 126);
 }
 
-div:hover,#ele1:hover,#ele4:hover{
+div:hover{
     background-color: white;
+}
+
+div:hover > h1{
+    color: black;
 }

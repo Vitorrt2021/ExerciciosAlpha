@@ -1,0 +1,30 @@
+body{
+    margin: 10px;
+    padding: 0;
+    display: flex;
+    background-color: #fcd5ce;
+    color: black;
+    font-size: 20px;
+}
+div{
+    border: solid 2px black;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
+.width{
+    width: 300px;
+    background-color: #f8edeb ;
+}
+.height{
+    height: 450px;
+    background-color: #fec89a;
+}
+.padding{
+    padding: 100px 10px 10px 10px ;
+    background-color: #d8e2dc;
+}
+.margin{
+    margin:50px;
+    background-color: #ffe5d9;
+}
