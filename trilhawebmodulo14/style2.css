@@ -1,0 +1,68 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+div{
+    width: 150px;
+    height: 130px;
+    padding-top: 20px;
+    margin: 20px;
+}
+
+.dotted{
+    border-style: dotted;
+    border-color: #CC8B86 #F9EAE1 #7D4F50 #D1BE9C;
+    border-width: 5px;
+    
+}
+.inset{
+    border-style: inset;
+    border-color: #F9EAE1 #D1BE9C #CC8B86;
+    border-radius: 10px;
+    border-width: 10px;
+
+}
+.dashed{
+    border-style: dashed;
+    border-color: #7d4f50 #D1BE9C;
+    border-radius: 20px;
+    border-width: 5px;
+
+}
+.solid{
+    border-style: solid;
+    border-color: #D1BE9C;
+    border-radius: 30px;
+    border-width: 2px 5px;
+
+}
+.double{
+    border-style:double;
+    border-color: #AA998F;
+    border-radius: 40px;
+    border-width: 2px 4px 6px 8px;
+
+}
+.groove{
+    border-style: groove;
+    border-color: #916953;
+    border-radius: 50px;
+    border-width: 2ex;
+
+}
+.ridge{
+    border-style:ridge;
+    border-color: #CF8E80;
+    border-radius: 60px;
+}
+.outset{
+    border-style: outset;
+    border-color: #FCDDF2;
+    border-radius: 70px;
+}

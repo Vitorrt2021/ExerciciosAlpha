@@ -1,0 +1,10 @@
+body{
+    display: flex;
+    justify-content: center; 
+}
+img{
+    width: 400px;    
+    border-radius: 100%;
+    border: solid 4px  #7EB2DD;
+    box-shadow: 4px -4px 100px #445E93 ;
+}
