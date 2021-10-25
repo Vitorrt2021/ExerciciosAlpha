@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+html{
+    font-size: 10px;
+}
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgb(220, 220, 220);
+}
+main{
+    width: 80%;
+    height: auto;
+    background-color: white;
+    padding: 5px;
+}
+img{
+    width: 250px;
+    height: 330px;
+}
+strong{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 900;
+}
+li{
+    font-size: 1.7rem;
+}
+h1{
+    font-size: 2.5rem;
+    text-align: center;
+    font-family:  'Lato', sans-serif;;
+}
+p{
+    text-align: justify;
+    font-size: 1.5rem;
+}
+p::first-letter{
+    text-transform: capitalize;
+}
+i{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+a{
+    text-decoration: underline;
+    text-decoration-color: blue;
+}
+.foto{
+    display: flex;
+}
+.foto img{
+}
+.observacao h2{
+    font-size: 1.5rem;
+}
+.observacao{
+    background-color: antiquewhite;
+    line-height: 1.3;
+    font-size: 1.3rem;
+    border: solid 2px black;
+    padding: 5px;
+}

@@ -1,0 +1,32 @@
+html{
+    font-size: 10px;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+article{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div{
+    margin: 10px;
+    padding: 5px ;
+    font-size: 2rem;
+    width: 300px;
+    height: 300px;
+    border: solid 2px black;
+    overflow: auto;
+}
+
+.d1{
+    writing-mode: horizontal-tb;
+}
+.d2{
+    writing-mode: vertical-rl;
+}
+
+.d3{
+    writing-mode: vertical-lr;
+}
