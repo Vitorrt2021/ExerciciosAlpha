@@ -1,0 +1,72 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
+html {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+  }
+  
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 1.6rem;
+    background-color: #eee;
+    display:flex;
+    justify-content: center;
+    
+}
+main{
+    
+    font-family: 'Zen Kurenaido', sans-serif;
+    padding: 10px;
+    background-color: white;
+    width: 80%;
+}
+h1{
+    text-align: center;
+    font-size: 3rem;
+}
+h3{
+    text-align: center;
+    font-size: 2rem;
+}
+ul li{ 
+    text-indent: 30px;
+    list-style-type: none;
+    background-image: url(../trilhawebmodulo14/imagem.jpg);
+    background-position: 0 0;
+    background-size: 2rem 2rem;
+    background-repeat: no-repeat;
+}
+
+
+dt{
+    font-weight: 900;
+}    
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+a:link{
+    color:black;
+}
+.Melhores a:hover{
+    color: blue;
+    text-decoration:underline;
+}
+
+.Sinopse a:hover{
+    color: blue;
+    text-decoration:underline;
+}
+footer{
+    background-color: antiquewhite;
+}
+footer a:link{   
+    color:chocolate;
+    text-decoration:underline;
+}   
+footer  a:hover{
+    color: blue;
+    text-decoration:underline;
+}

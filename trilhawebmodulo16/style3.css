@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "primeira font";
+    src: url("./IrishGrover-Regular.woff") format('woff');
+}
+
+body{
+    font-family: primeira font;
+    display: flex;
+    justify-content: center;
+}
+main{
+    width: 60%;
+    text-align: center;
+}
