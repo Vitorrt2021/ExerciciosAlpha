@@ -1,0 +1,52 @@
+html{
+    font-size: 10px;
+    font-family:Arial, Helvetica, sans-serif 
+}
+body{
+    margin: 0;
+    padding:0;
+}
+main{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+div{
+    width: 200px;
+    height: 200px;
+    font-size: 2rem;
+    margin: 5px;
+    text-align: center;
+    border: solid 2px black; 
+}
+p{
+    font-size: 1.5rem;
+}
+.tipo-hsl{
+    background-color: hsl(120,80%, 50%);
+}
+.tipo-hsla{
+    background-color: hsla(10, 80%, 50%, 1);
+}
+.tipo-rgb{
+    background-color: rgb(123,43,234);
+}
+.tipo-rgba{
+    background-color: rgba(123,32,65,0.5);
+}
+.tipo-hex{
+    background-color: #fa3;
+}
+.tipo-hexTransparency{
+    background-color: #ffee00aa;
+}
+.tipo-nome{
+    background-color: gray;
+}
+.tipo-current{ 
+    background-color: currentcolor;   
+}
+.tipo-initial{
+    background-color: initial;
+}
