@@ -1,0 +1,94 @@
+html{
+    font-size:10px;
+}
+body{
+    margin:0;
+    padding:0;
+    background-color: rgb(182, 180, 180);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: row;
+}
+main{
+    display: flex;
+    flex-wrap: wrap;
+}
+section{
+    margin: 20px;
+    border: solid 2px black;     
+    width: 450px;
+    height: 450px;    
+    background-color: #B4D6D3;
+}
+div{
+    margin-top: 60px;
+    border: solid 2px black; 
+}
+h1{
+    text-align: center;
+    font-size: 2rem;
+}
+img{
+    width: 250px;
+
+}
+.area-de-trabalho{
+    width: 450px;
+    height: 450px;
+    border: none; 
+}
+.blocos{
+    margin: 5px;
+    width: 100px;
+    height: 100px;
+    flex-direction: column;
+}
+.alinhando-imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.alinhando-vertical{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.alinhando-horizontal{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.alinhando-centro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.alinhando-escada{
+    display: flex;
+    flex-direction: column;
+
+}
+.alinhando-escada .blocos{
+    width: 30%;
+    height: 30%;
+}
+.alinhando-escada .quadrado_2{
+    align-self: center;
+}
+.alinhando-escada .quadrado_3{
+    align-self: flex-end;
+}
+
+.quadrado_1{
+    background-color: #E8C541;
+}
+.quadrado_2{
+    background-color: #F29144;
+}
+.quadrado_3{
+    background-color: #DB4848;
+}
+.quadrado_4{
+    background-color: #7A85EB;
+}
