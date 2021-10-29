@@ -1,0 +1,65 @@
+html{
+    font-size: 10px;
+}
+body{
+    margin:0;
+    padding: 0;
+}
+main{
+    
+    display: flex;
+    flex-wrap: wrap;
+
+}
+section{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+
+}
+div{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    display: flex;
+    border: solid 2px black;
+    text-align: center;
+}
+
+.area-de-trabalho{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+.tag-nowrap{
+    flex-wrap: nowrap;
+}
+.tag-wrap{
+    flex-wrap: wrap;
+}
+.tag-reversewrap{
+    flex-wrap:wrap-reverse;
+}
+.blocos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+.quadrado_1{
+    background-color: #E8C541;
+    flex-shrink: 1;
+}
+.quadrado_2{
+    background-color: #F29144;
+    flex-shrink: 2;
+}
+.quadrado_3{
+    background-color: #DB4848;
+    flex-shrink: 3;
+}
+.quadrado_4{
+    background-color: #7A85EB;
+    flex-shrink: 4;
+}
