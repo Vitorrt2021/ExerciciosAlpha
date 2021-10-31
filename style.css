@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 html{
-    font-size: 15px;
+    font-size: 12px;
 }
 @media (max-width: 900px)
 {
@@ -10,11 +10,11 @@ html{
    }
 }
 
-@media (max-height: 746px)
+@media (max-width: 600px)
 {
     html
    {
-        font-size: 10px;
+        font-size: 7px;
    }
 }
 body{
