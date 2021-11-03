@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 html{
     font-size: 12px;
+    overflow-x: hidden;
 }
+
 @media (max-width: 900px)
 {
     html
@@ -106,7 +108,15 @@ p{
 }
 .ensino > img{
     width: 60%;
-    height: 50%;
+    height: auto;
+}
+.img-tamanho{
+    align-items: flex-start;
+    width: 20vw;
+    height: 20vh;
+}
+.img-tamanho > img{
+    width: 100%;
 }
 .habilidades{
     width: 100vw;
