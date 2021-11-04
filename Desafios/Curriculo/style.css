@@ -13,7 +13,7 @@ main{
     color:white;
 }
 h1{    
-    margin-top:50vh;
+    margin-top:30vh;
     font-size: 5rem;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
@@ -52,14 +52,14 @@ a:hover{
 
 .foto > img{
     min-width: 100px;
-    width: 20vh;
+    width: 40vh;
     border-radius: 100%;
     border: solid 10px #394032;
 }
 .quem-sou{
     padding-top: 20px;
     flex-direction: column;
-    background-color: #394032;
+    background-color: #1E2019;
 }
 .quem-sou > p{
     width: 70%;
