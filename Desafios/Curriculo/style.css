@@ -26,6 +26,13 @@ h2{
 p{
     font-size: 3rem;
 }
+a{
+    color: black;
+}
+
+a:hover{
+    color: #656863;
+}
 .nivel{
     font-size: 2rem;
     color: white;
@@ -107,7 +114,7 @@ p{
 }
 .habilidades{
     padding-top: 10px;
-    margin-bottom: 10px;
+    padding-bottom: 20px;
     background-color: #394032;
     flex-direction: column;
 }
@@ -162,6 +169,10 @@ p{
 }
 .redes-sociais a>img{
     width: 60px;
+}
+
+.redes-sociais a>img:hover{
+    width: 80px;
 }
 .link p{
     font-size: 2rem;
