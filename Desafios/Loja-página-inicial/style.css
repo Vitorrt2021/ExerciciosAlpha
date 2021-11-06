@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+html{
+    margin:0;
+    padding:0;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;;
+}
+body{
+    padding-right: 63px;
+    padding-left: 63px;
+    background-color: #EFEFF0;
+}
+header{
+    width: 92vw;
+    top: 0;
+    position: fixed;
+}
+main{
+    margin-top: 100px;
+    width: 92vw;
+}
+h1{
+    font-size: 10rem;
+}
+h2{
+    font-size: 3rem;
+}
+
+.centralizar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fale-conosco{
+    justify-content: start;
+    background-color:#9F5943 ;
+    height: 54px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 100;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.fale-conosco span{
+    width: 400px;
+}
+.fale-conosco  .pesquisar{
+    margin-left: 40vw;;
+}
+.fale-conosco  input{
+    color: white;
+    border: none;
+    font-size: 1.7rem;
+    font-weight: 200;
+    width: 20vw;
+    background-color: rgba(0,0,0,0);
+}
+.fale-conosco .pesquisar:hover{
+    text-decoration-line: underline;
+}
+.bloco-paginas{
+    color: #9F5943;
+    height: 70px;
+    background-color:#EFEFF0 ;
+    justify-content: start;
+    font-size: 1.5rem;
+}
+.bloco-paginas button{
+    border:none;
+    font-size: 2.5rem;
+    background-color: rgba(0,0,0,0);
+    color: #9F5943;
+    font-family: 'Oswald', sans-serif;;
+}
+.bloco-paginas .sites{
+    margin-left: 30px;
+    font-size: 1.5rem;
+    width: 15vw;
+    font-weight: lighter;
+    justify-content: space-between;
+}
+.bloco-promocoes .promocoes{
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+
+}
+
+.bloco-promocoes{
+    margin-left: 30vw;
+}
+.bloco-promocoes img{
+    
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.bloco-paginas a{
+    text-decoration: none;
+    color: #9F5943;
+}
+.apresentacao{
+    width: inherit;
+    height: 100vh;
+    background-image: url("./imagens/apresentação.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    color: white;
+}
+.apresentacao button{
+    background-color: #9F5943;
+    width: 150px;
+    height: 50px;
+    border:none;
+}
+.apresentacao h1{
+    letter-spacing: 13.44px;
+    font-size: 11.2rem;
+    font-weight: 400;
+}
+.apresentacao h2{
+    letter-spacing: 5.95px;
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+.texto-icone{
+    font-size: 2rem;
+    letter-spacing: 3px;
+    font-weight: 100;
+}
+.bloco-dados{
+    color: #9F5943;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: inherit;
+    height: 265px;
+    background-color: white;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.bloco-dados img{
+    width: 70px;
+}
+.dados h3{
+    font-size: 5rem;
+    line-height: normal;
+}
+.bloco-dados h3{
+    font-size: 1.5rem;
+}
+.bloco-dados .dados{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bloco-produtos{
+    width: inherit;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    color:#9F5943;
+}
+.bloco-produtos button{
+    color: white;
+    background-color: #9F5943;
+    border: none;
+    width: 200px;
+    height: 50px;
+    font-size: 2rem;
+    margin-bottom: 500px;
+}
+.bloco-produtos .produto{
+    flex-direction: column;
+    height: 733px;
+    width: 560px;
+    background-color: white;
+}
+.produto1{
+    background-image: url('./imagens/cacto.webp');
+    background-repeat: none;
+    background-size: cover;
+}
+
+.produto2{
+    background-image: url('./imagens/plantas.webp');
+    background-repeat: none;
+    background-size: cover;
+}
+.produto3{
+    background-image: url('./imagens/suculenta.webp');
+    background-repeat: none;
+    background-size: cover;
+}
+.quem-somos{
+    color: #9F5943;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+}
+
+.quem-somos > .promocao{
+    flex-direction: column;
+    color: white;
+    background-color: #123132;
+    width: 50%;
+    height: 883px;
+}
+.quem-somos h3{
+    font-size: 4rem;
+}
+.quem-somos p{
+    font-size: 1.5rem;
+}
+.quem-somos .texto{
+    flex-direction: column;
+}
+.quem-somos > .promocao > h2{
+    font-size: 6rem;
+}
+.quem-somos > .promocao > button{
+    font-size: 3rem;
+    border:none;
+    background-color: white;
+    width: 300px;
+    height: 75px;
+    margin-bottom: 10%;
+}
+.imagem{
+    width: 25%;
+    height: 590px;
+}
+#imagem1{
+    background-image: url('./imagens/casa-cactus.webp');
+    background-repeat: none;
+    background-size: cover;
+}
+#imagem2{
+    background-image: url('./imagens/folha.webp');
+    background-repeat: none;
+    background-size: cover;
+}
+#imagem3{
+    height: 883px;
+    width: 50%;
+    background-image: url('./imagens/mulher.webp');
+    background-repeat: none;
+    background-size: cover;
+}
+.texto{
+    height: 590px;
+    width: 50%;
+    background-color: white;
+}
+.bloco-fale-conosco{
+    height: 1065px;
+    
+    background-image: url("./imagens/planta-background.webp");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+form{
+    flex-direction: column;
+    background-color:rgba(255,255,255,0.9);
+    width: 962px;
+    height: 840px;
+    font-size: 2rem;
+}
+#input-email,
+#input-telefone,
+#input-mensagem{
+    width: 900px;
+}
+#input-mensagem{
+    height: 210px;
+}
+#input-submit{
+    color: white;
+    background-color: #9F5943;
+    width: 910px;
+    height: 50px;
+}
+#input-submit:hover{
+    color: black;
+    background-color:white;
+}
+form input{
+    font-size: 2rem;
+    height: 50px;
+    width: 450px;
+}
+
+form > span{
+    display: flex;
+}
+
+.bloco-informacoes-gerais{
+    height: 450px;
+    background-color: #123132;
+    color: white;
+    justify-content:space-between;
+}
+.informacoes{
+    width: 100%;
+    justify-content:space-around;
+}
+.bloco{
+    flex-direction:column;
+    font-size: 2rem;
+}
+.bloco input{
+    height: 60px;
+    width: 470px;
+    background-color: rgba(0,0,0,0);
+    font-size: 2rem;
+    border: solid white 2px;
+    color: white;
+}
+.bloco  .mandar{
+    text-align: center;
+    width: 480px;
+    background-color: white;
+    color:black;
+}
+.bloco  .mandar:hover{
+    background-color: #D0B0A6;
+    border:none;
+}
+
+.bloco h2{
+    font-size: 3rem;
+}
+
+ul.a {
+    list-style-type: none;
+  }
+.mapa > iframe{
+    width: 100%;
+    height: 720px;
+    background: transparent;
+}
+
+footer{
+    justify-content: space-around;
+    color: #9F5943;
+    font-size: 0.2rem;
+    height:260px;
+    background-color: #EFEFF0;
+}
+footer > section{
+    width: 90%;
+}
+.bloco .bloco1,.bloco3,.bloco4{
+    flex-grow: 2;
+}
+.bloco .bloco2{
+    width: 1000px;
+}
+footer img{
+    width: 30px;
+}
+footer span{
+    display: flex;
+}
+#imagem-cartao{
+    width: 200px;
+}

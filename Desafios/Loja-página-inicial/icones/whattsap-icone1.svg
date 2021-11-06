@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 32" width="36" height="32">
+	<title>Camada 1</title>
+	<defs>
+		<image  width="36" height="32" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAgCAMAAABNTyq8AAAAAXNSR0IB2cksfwAAAFRQTFRFoFhBsndk1bWr59XP8+rn////28C3w5aHpmJMuIJw7d/b+fTzz6uf3MG49Ovo1rasxJeI4svE+vX06NbQ7uDc0KygrG1YyqGUyaCTvox84crDvYt79dT/ewAAARdJREFUeJzNU9FywyAMg1JtEBaSQCDt9v//OeNcUmD0+tjpITl8si1kI8Q7IS/qCqiPT/2UYgYcsF9PaCPgJpPrzQvRZIeiB/j50TfAzn9JAWuVO3VqRbhGBbGaSAJynimTA2IreuSvrRKbUh6Jy6FUu1QnIbHmZkQKRXTGUpI2bt9WSlUK3S3uUktNQgAdkvSYXpJIBW6ZvDuhWemJ+yGR5vedaELKcLTSpE9LIomnbYEX2fOtkviwxKy8K+Stttm8AgbX010zOhe5aNWN4GCaCFlbFyLffMORtlGULScRqZjnZnnkFVZst4E2e2+gf2jbp5aT+EY+X19dlKK/u7cc6sZvII1+fyxLZ79FmI6VTIbQYfw3/ALfAQuqglaNNQAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Camada 1" href="#img1" x="0" y="0" />
+</svg>

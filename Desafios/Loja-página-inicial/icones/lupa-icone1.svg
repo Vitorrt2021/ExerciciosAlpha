@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 27" width="29" height="27">
+	<title>Camada 2</title>
+	<defs>
+		<image  width="29" height="27" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAbCAMAAAC3FHQgAAAAAXNSR0IB2cksfwAAAEhQTFRFoFhBpmJMw5aH59XP////8+rn28C3sndk+vX03MG40KygxJeI7uDc1bWr6NbQrG1YyqGUuIJw1ras9Ovo7d/bvox8+fTzvYt7b6KP9QAAAJBJREFUeJzVkVEPgyAMhOk8hIKiqHP//5+uWeYkBZ/N7um4L2kv1JibRY8OsL1rQmc9hxgGjC2INH3M7Pt6rE2HzYiaRj/9/GI1TVwuyYpiLh9B03LXqmkZUFWLt9M/QYq6czHtbLSW/VuUOjQ+kzFKSi8LbHqyKK5yBIDd0MQmhxAlpwt89BJ8TQVXh/gjvQGaGgPsWHnAIgAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Camada 2" href="#img1" x="0" y="0" />
+</svg>

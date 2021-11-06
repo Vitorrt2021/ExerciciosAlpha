@@ -29,7 +29,6 @@ p{
 a{
     color: black;
 }
-
 a:hover{
     color: #656863;
 }
@@ -44,12 +43,10 @@ a:hover{
     align-items: center;
 }
 .apresentação-header{
-    
     width: 100%;
     flex-direction: column;
     background-color: #1E2019;
 }
-
 .foto > img{
     min-width: 100px;
     width: 40vh;
@@ -98,7 +95,10 @@ a:hover{
 .ensino > h4{
     font-size: 1.5rem;
     height: min-content;
-    color: gray;
+    color: rgb(59, 58, 58);
+}
+.superior{
+    padding-top: 30px;
 }
 .ensino > p{
     font-size: 2rem;
@@ -158,6 +158,7 @@ a:hover{
     background-color: white;
     flex-direction: column;
     font-size: 1rem;   
+    padding-bottom: 30px;
 }
 .link{
     justify-content: flex-start;

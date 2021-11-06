@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 31" width="34" height="31">
+	<title>Camada 3</title>
+	<defs>
+		<image  width="34" height="31" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAfCAMAAAC1fe+DAAAAAXNSR0IB2cksfwAAARRQTFRFAAAA2L+8vZKCtH5sr3RhoFhBvpGC18C67+/w7e3tvpGCpWFLpWFL6uTkzKqZpmFKyaWZ7u7usXNjoVhBr3Rh7ObmpGJKpWFL3tLOpGFM6ubmr3Rh7OzyxaWYx6OX3d3dqWpWzKyj28nE0bauuIZ26uXlvJGBvZCB7+/w1r+5pGBL7u7x8PDw0b+25dzarnNh7+/vx6OXwpmM7u7wtH1us31s7+/wr3NfpFtAqmtW8PDwn1hBoVhBoVdC7u7wn1lA0rev4NLPuYd37u7woFhB6uXloVdC6uXl7+/v5d3aoFhBrXNhpGFL5tvZpV9LtH1s39HPpGJJ0rivrnNh5traq2xXxqOXoFpBuYh3yKSZ3MrF5Nvbp1YQngAAAFx0Uk5TAEiv//////+bHDPG/18PiZsPPuDgKGvgPnk+bCg+4A///////5tf/////0nGHP//Pv//ijP/4DMc/zPIeknIKP///3qc4mz/X8jiVF96M7FfScjiPklsM5z//xw+8nX2AAABYUlEQVR4nH2TZ1/CQAzGo+XAUXGLW9oiHFVbQVELKlBHce8Bfv/v4XVwuV6rzyvy8P8laS4BQI2MKhlCMko2NzYOaZqYJFxqdioJ5KdJTOrMrETMzRNZC4sxYikBMBWWBWIljWDFVjmxlk6wWusRsfEXQchm2PNWAa2iputGSSi1HSBldCo0UNVEZ8dHcGIlGsnANLuM2MMk1hChNveq+2zuPLI5QWvcrB8AHPKogUgVzSOA4zQEm8lQgBMeOYjUsUHaBGjxSOeIE0dOhaSRNCIg7KvPMMzKnbAGzxnSFgyn07VyrmCQyoU/XvKf/NEBXIp5mYpCbF4F73g9/Nvwwl48o8Hr9AIk7NfsUkF6lOomXJj8LfttezQmL3jJWjNauzuWw6KSLLY0do8v7z3RZMJ/bfNBOIHHJ08mPNd8jt/ay2uc0J2398TJfghQTiGf8sEG+vrudwaDTt9VW+UftH8B7BtGC3eZTcEAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Camada 3" href="#img1" x="0" y="0" />
+</svg>
