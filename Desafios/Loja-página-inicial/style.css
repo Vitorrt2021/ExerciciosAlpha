@@ -10,6 +10,7 @@ html{
     align-items: center;
     justify-content: center;
     font-family: 'Oswald', sans-serif;;
+    overflow-x: hidden;
 }
 body{
     padding-right: 63px;
@@ -31,7 +32,15 @@ h1{
 h2{
     font-size: 3rem;
 }
-
+.mensagem{
+    top:90vh;
+    left: 90vw;
+    position: fixed;
+}
+.mensagem img{
+    width: 64px;
+    height: 64px;;
+}
 .centralizar{
     display: flex;
     justify-content: center;
