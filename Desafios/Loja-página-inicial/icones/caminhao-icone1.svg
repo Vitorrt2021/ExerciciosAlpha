@@ -1,8 +1,12 @@
-<svg preserveAspectRatio="xMidYMid meet" data-bbox="20 59.558 160 80.886" viewBox="20 59.558 160 80.886" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-labelledby="svgcid--atg0tj7cmbhy"><defs><style>#comp-kl0xgo4f svg [data-color="1"] {fill: #A05841;}</style></defs><title id="svgcid--atg0tj7cmbhy"></title>
-    <g>
-        <path d="M177.442 97.934h-5.904l-9.84-17.023c-.394-.787-1.279-1.181-2.066-1.181h-19.483V64.576c0-2.755-2.263-5.018-5.018-5.018h-72.13c-2.755 0-5.018 2.263-5.018 5.018v60.223c0 2.755 2.263 5.018 5.018 5.018h14.957c1.181 6.003 6.396 10.627 12.792 10.627s11.71-4.625 12.792-10.627h41.329c1.181 6.003 6.396 10.627 12.792 10.627s11.71-4.625 12.792-10.627h7.085a2.436 2.436 0 0 0 2.46-2.46v-27.06a2.574 2.574 0 0 0-2.558-2.363zM90.75 135.621c-4.526 0-8.266-3.739-8.266-8.266 0-4.526 3.641-8.266 8.266-8.266 4.526 0 8.266 3.641 8.266 8.266 0 4.527-3.641 8.266-8.266 8.266zm66.815 0a8.266 8.266 0 1 1 0-16.532 8.266 8.266 0 0 1 0 16.532zm-17.417-37.786V84.453h18.106l7.774 13.383h-25.88z" fill="#000016" data-color="1"></path>
-        <path d="M36.63 76.876h14.563a2.436 2.436 0 0 0 2.46-2.46 2.436 2.436 0 0 0-2.46-2.46H36.63a2.436 2.436 0 0 0-2.46 2.46 2.436 2.436 0 0 0 2.46 2.46z" fill="#000016" data-color="1"></path>
-        <path d="M53.063 97.54H26.396a2.436 2.436 0 0 0-2.46 2.46 2.436 2.436 0 0 0 2.46 2.46h26.667a2.436 2.436 0 0 0 2.46-2.46 2.436 2.436 0 0 0-2.46-2.46z" fill="#000016" data-color="1"></path>
-        <path d="M44.6 87.208a2.436 2.436 0 0 0-2.46-2.46H22.46a2.436 2.436 0 0 0-2.46 2.46 2.436 2.436 0 0 0 2.46 2.46h19.68a2.436 2.436 0 0 0 2.46-2.46z" fill="#000016" data-color="1"></path>
-    </g>
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 82" width="160" height="82">
+	<title>Layer</title>
+	<defs>
+		<image  width="162" height="82" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKIAAABSAQMAAADtrp1BAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAWn1lDova4dgAAAAJ0Uk5TAP9bkSK1AAAA9UlEQVR4nO3VUQ6DIAwA0BI++PQIHoWbCUdjJxm7AftjCZGBwCyzH1OTZR/rh5qnsU2xCJBDxhoBUMRX0KpXZMfU/L7GeNlqevB2Tun3Hq8XLV2nM6lxj2pYPhBCVaqmq2w0lA72cxWuZNOdckf1gXtKGa2BUqB1IlWRKpPw2K1xbY9Ip3t856yPHbp9A5Gtjhf76/f0itWNBWeO1YqiHrAa3lQh1VVdrzWlTTOxKpxSoFX1Ci1GXSYqzaAEpGUm03FCaqp6rIMdFmWBzUi9tKVIjv46om1wuT+v4E0VVta6KqNbFdo+NuKtEmRoCTRSYetFvvsE23XolWUt+dQAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Layer">
+		<use id="Layer" href="#img1" x="-1" y="0" />
+	</g>
 </svg>

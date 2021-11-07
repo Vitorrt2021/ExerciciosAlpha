@@ -1,5 +1,10 @@
-<svg preserveAspectRatio="xMidYMid meet" data-bbox="46 30.5 108 138.9" viewBox="46 30.5 108 138.9" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-labelledby="svgcid-12hsiw434zjs"><defs><style>#comp-klesydws svg [data-color="1"] {fill: #A05841;}</style></defs><title id="svgcid-12hsiw434zjs"></title>
-    <g>
-        <path d="M150.8 55.6c-13-.7-20.7-2.2-27.4-5.3-6.6-3.1-12.5-7.8-21.1-16.9l-2.7-2.9-2.4 3.2c-12.8 16.7-27.9 20.8-48 21.9l-3.2.2v58.7c0 1.6.3 36.6 52.5 54.6l1 .3.5-.1.5.1 1-.3c50.7-17.5 52.4-50.7 52.5-54.6V55.8l-3.2-.2zm-98.1 59V62c18.8-1.4 34.2-6 47.2-21.3v121.8c-46.9-16.4-47.2-46.6-47.2-47.9z" fill="#ff6f5b" data-color="1"></path>
-    </g>
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 160" width="132" height="160">
+	<title>Layer</title>
+	<defs>
+		<image  width="132" height="160" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACgCAMAAAD6pzS1AAAAAXNSR0IB2cksfwAAAFpQTFRFAAAAn1lDaEpKX19tf3+KUU9diVFDb297r6+2////7+/wn5+nZkpL39/iv7/FYGBu4ODjoKCogICLUFBf8PDxkJCacHB8sLC3wMDFz8/Ty8vPbEpJgU5EVE1Z499WtQAAAB50Uk5TAP//////////////////////////////////////9DgaNwAAAkJJREFUeJzt22t3gjAMBmBR58R5Rbzs9v//5ia1TrCFNE3Sbsv7zYZDHiGc4zmW0Sg2RRF9injCJTkY0iqKIrmiaCUDQhrFg0Ge4SJIKzwGSYafIMboJ4goBgkCDJCBlwEl8DFCBEyMYAI9A0UgdeAFVI5YQTyDRACB+A6gBPRBmvX2IRytfZy7T1Jt+6IIG0XYKMJGETaKsFGEjSJsFGGjCJtIxHg8mU6fxrN0iOd5abOYT5IgXsp2FlNxRJfQBMvAIZYrl6Es14KIza3rdld9Z7e93RPUiGIQ+2vHuvpZq+oIBQIxW5h+h/bywayuZBBrcxn23fV97bLxII7G4LjsS3MtlgII82Ac/b4TP8JM5dldPDdFfsSu6fMwECbm2d2wI5ovW/uqNWo0gxF9d+NK9FZpEd7ZO12qrzKIyletUJOpCEUoQhGKUAQ74nyJ92fLpimzIzgCRrwh8k6M+CgR+VTEL0SA/wlVhAwCqFCEIhShCEUoIiMEfGsVMwKmUIQiFCGPCNj/qYj/hYAo2BAhO5MVwY0I2imuCEHEsIIJMVKEwzCs+LuIUTdDCo7kiUigeDTkgRBXuAzSCrchD4SowmeQVPgNeSBE34hLreg3yCiGDHkgBBTDBn4FxMCtgBl4FVADpwJu4FOEGJgUYQQeRbCBgYExUCtwBlIFlkDJiDFQKeIMJIpYAgWDwhCpoCHEMegMaAYpAccgJ4QrOAiBDC5CAIOTAGRwEwAOEUI/Q4zgdcgKnIwEhA4jkeDeEXmSLyPlpxwwbosAAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Layer" href="#img1" x="0" y="0" />
 </svg>

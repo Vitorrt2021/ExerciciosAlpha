@@ -1,5 +1,12 @@
-<svg preserveAspectRatio="xMidYMid meet" data-bbox="20 50.9 160 98.2" viewBox="20 50.9 160 98.2" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-labelledby="svgcid--radawbkxbpwf"><defs><style>#comp-kl0xfxz9 svg [data-color="1"] {fill: #A05841;}</style></defs><title id="svgcid--radawbkxbpwf"></title>
-    <g>
-        <path d="M180 133.3V59c0-4.5-3.4-8.1-7.6-8.1H27.7C23.4 51 20 54.6 20 59v82c0 4.5 3.4 8.1 7.6 8.1h144.7c4.2 0 7.6-3.6 7.6-8.1v-7.7zM37.3 123h-1.5v-6H89v6H37.3zm-1.5-13.7v-6h21.8v6H35.8zm-9-22.8V68.9h146.4v17.6H26.8zm55.4 50.2H35.8v-6h46.4v6z" fill="#000016" data-color="1"></path>
-    </g>
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 98" width="160" height="98">
+	<title>Layer</title>
+	<defs>
+		<image  width="160" height="100" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAABkAQMAAAA7eKnMAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAWn1lDova4dgAAAAJ0Uk5TAP9bkSK1AAAAZElEQVR4nGNgwAb4/2OADwzymIJ/GOwxBf8x1GMTxBT7/39UEF3wH2Zk1I8KUllwEMb7iBFkYGCnjyCF7qSbICRRsg+QIC18RAtBsNuZ6SBIC8fTSbAeUwxrXYy11v6DvdLHBgBXpAsdhYypWAAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Layer">
+		<use id="Layer" href="#img1" x="0" y="-1" />
+	</g>
 </svg>

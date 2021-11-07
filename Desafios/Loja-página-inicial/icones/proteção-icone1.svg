@@ -1,8 +1,12 @@
-<svg preserveAspectRatio="xMidYMid meet" data-bbox="34.161 20 131.677 160" viewBox="34.161 20 131.677 160" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-labelledby="svgcid--jkvge0-qd9c8i"><defs><style>#comp-kl4tae1x svg [data-color="1"] {fill: #A05841;}
-#comp-kl4tae1x svg [data-color="2"] {fill: #FFFFFF;}</style></defs><title id="svgcid--jkvge0-qd9c8i"></title>
-    <g>
-        <path d="M100 20S64.7 50.2 34.2 39.9c0 0-.5 57.3 2.1 76.2 2.9 21.1 12.9 46.4 63.7 63.9 50.8-17.5 60.8-42.8 63.7-63.9 2.6-18.9 2.1-76.2 2.1-76.2C135.3 50.2 100 20 100 20z" fill="#000016" data-color="1"></path>
-        <path fill="#FFFFFF" d="M126.3 92.2v44.2H73.8V92.2h52.5z" data-color="2"></path>
-        <path d="M87.6 90.8V76.9c0-5.8 5.6-10.5 12.4-10.5s12.4 4.7 12.4 10.5v13.9h5.5V76.9c0-8.5-8.1-15.4-18-15.4s-18 6.9-18 15.4v13.9h5.7z" fill="#FFFFFF" data-color="2"></path>
-    </g>
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 140" width="108" height="140">
+	<title>Layer</title>
+	<defs>
+		<image  width="108" height="140" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAACMAQMAAACj7N4MAAAAAXNSR0IB2cksfwAAAAZQTFRF/29bn1lDNC5zxgAAAAJ0Uk5TAP9bkSK1AAABSElEQVR4nO3VPXKEMAwFYDNkxl04go/io+Eu13K316Db1l1cMFYk/8ATO8lMkhYa9mNBEhR6xtTjzajjXdNdGBR9VFw3RUqoiTJypl2zIBci1ZYIG3si7LR+qk70xE4zPbDTQh9Y2pHF0muxUHqinXnUspSYx5ieNibFcS8FYW+1chNh+9vJ9UqxnFIn/2hXkcUoJs2gmA2yGGQxN2/e/C/pz9zMGn7DCIx9u35HtwHDCxOQ117+iXY/WV44w1bZZaGezLL4AtIAZYS6AG1/v54QJ306KPe5c5tJFbcflJZLGewDKc7HYqzTT1LQjqFaFtkxFM+RO+tXM36s3PqJeV93VnFmtP3cV//MD8Gql1yzdOYE32bpTBHfciF2upYaodNSxkzhFMTE4f3+GBO3WlCpxgpmGczU5sJH68MReEnYSzpfo3zp5y/Od5S2TNXjoQAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Layer">
+		<use id="Layer" href="#img1" x="0" y="0" />
+	</g>
 </svg>
