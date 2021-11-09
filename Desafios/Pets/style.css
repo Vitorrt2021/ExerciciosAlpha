@@ -374,6 +374,10 @@ p{
     font-size:1.4rem;
     font-weight: 400;
 }
+.ir-topo > div >a{
+    text-decoration: none;
+    color: white;
+}
 .ir-topo img{
     margin-left: 8px;
     width: 20px;

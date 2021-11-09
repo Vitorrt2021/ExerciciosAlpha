@@ -1,0 +1,12 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 56" width="34" height="56">
+	<title>Layer</title>
+	<defs>
+		<image  width="34" height="56" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAA4AQMAAACixLh8AAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAAAbklEQVR4nK2QsRGAIBRD4SgoGYFRGA1HcxRHsLTgDJfklNZCilcALx8ScuAqG1l3sh1kP0lc4hBvEToFhQYKFRQKKGQJSUL8UVhs2u94XxTlJuU4zcme4gCHKdhDPPDD9efXY7XhZtySG3N7anIC2SpijsYD7KYAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Layer">
+		<use id="Layer" href="#img1" x="0" y="0" />
+	</g>
+</svg>
