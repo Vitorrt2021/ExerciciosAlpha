@@ -1,0 +1,395 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
+html{
+    font-size: 10px;
+    font-family: 'open sans',sans-serif;
+    font-weight: 400;
+}
+body{
+    width: 100%;
+    height: 100%;
+    margin:0;
+    padding: 0;
+    overflow-x: none;
+}
+header{
+    width: 100vw;
+    top: 0;
+    position: fixed;
+}
+main{
+    width: 100%;
+    height: 100%;
+}
+button{
+    width: 224px;
+    height: 37px;
+    font-family: 'open sans' sans-serif;
+    font-size: 1.4rem;
+    line-height: 19.6px;
+    font-weight: 400;
+    color:white;
+    border: none;
+    background-color: #F56A56;
+}
+button:hover{
+    background-color: #CA2913;
+}
+.conversar{
+    top: 90vh;
+    left: 80vw;
+    position: fixed;
+}
+.conversar{
+    width: 264px;
+    height: 56px;
+}
+.conversar:hover{
+    background-color: #EC5B47;
+}
+.centralizar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ligue{
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    color: #EC5B47;
+    font-weight: 400px;
+    padding-left: 70vw;
+    height: 32px;
+    width: 100%;
+    background-color:#EEEEEE ;
+}
+.ligue h3{
+    margin:none;
+}
+.paginas{
+    width: 100%;
+    height: 101px;
+    background-color: rgba(255,255,255,0.9);
+}
+.nome-site{
+    width: 220px;
+    height: 64px;
+}
+.nome-site img{
+    margin-bottom: 5px;
+}
+.paginas-header{
+    width: 713px;
+    height: 39px;
+    justify-content: space-around;
+}
+
+
+h1 .animal{
+    color: #555;
+    font-family: raleway, sans-serif;
+    font-size:2.5rem;
+    font-weight: 700;
+}
+
+h1 .clinica{
+    color: #555;
+    font-family: raleway, sans-serif;
+    font-size:2.5rem;
+    line-height: 25px;
+    font-weight: 400;
+}
+
+h1 .veterinaria{
+    color: #a0a0a0;
+    font-family: raleway, sans-serif;
+    font-size:1.3rem;
+    line-height: 25px;
+    font-weight: 400;
+}
+.paginas a{
+    text-decoration: none;
+    color: #2c748e;
+    font-family: raleway, sans-serif;
+    font-size: 1.3rem;
+    line-height: 38px;
+    font-weight: 400;
+}
+.tela-inicial{
+    margin-top: 133px;
+    height: 756px;
+    width: 100vw;
+    background-image: url('./imagens/lobo.png');
+    background-size: cover;
+    background-repeat: none;
+}
+.mensagem{
+    width: 558px;
+    height: 756px;
+    background-color: #eeeeee60;
+    justify-content: end;
+}
+.mensagem .bloco h2{
+    margin-bottom: -40px;
+}
+.mensagem .bloco{
+    width: 268px;
+}
+
+h2{
+    color: black;
+    font-family: raleway,sans-serif;
+    font-size: 4.5rem;
+    line-height: 45px;
+    font-weight: 700;
+}
+
+h3{
+    color: black;
+    font-family: raleway,sans-serif;
+    font-size: 4.5rem;
+    line-height: 45px;
+    font-weight: 400;
+}
+p{
+    color: black;
+    font-family: 'open sans', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+.tela-servico{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 660px;
+    background-color: #EEEEEE;
+}
+.nossos-servicos{
+    height: 660px;
+    width: 928px;
+    background-color: #eee;
+    justify-content: end;
+    align-items: flex-start;
+}
+.nossos-servicos .bloco{
+    margin: 50px;
+}
+.nossos-servicos h2{
+    margin-bottom: -40px;
+}
+
+
+.servicos{
+    background-color: white;
+    padding-top: 40px;
+    padding-left: 40px;
+    width: 100%;
+    height: 620px;
+}
+.servicos h3{
+    color:#555;
+    font-size: 2rem;
+    line-height: normal;
+    font-weight: 400;
+}
+.servicos p{
+    font-size: 1.4rem;
+    line-height: normal;
+    font-weight: 400;
+}
+.servicos img{
+    width: 10px;
+}
+.servicos{
+    display: flex;
+
+}
+.servico{
+    height: 130px;
+    display: flex;
+    margin-left: 30px;
+}
+.servico > div{
+    width: 280px;
+    margin-top: 32px;
+    margin-left: 20px;
+}
+.sobre-clinica{
+    background-image: url('./imagens/background-zul.webp');
+    background-size: cover;
+    background-repeat: none;
+    display: flex;
+    width: 100%;
+    height: 589px;
+    background-color: blue;
+}
+.sobre-clinica .titulo h2{
+    margin-bottom: -40px;
+}
+.sobre-clinica .titulo{
+    padding-top: 20vh;
+    width: 37vw;
+    height: 589px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.sobre-clinica .texto{
+    width: 632px;
+    flex-direction: column;
+}
+.sobre-clinica h2, .sobre-clinica h3{
+    color: white;
+}
+.texto p{
+    color: white;
+    font-size: 1.4rem;
+    line-height: 21px;
+    font-weight: 400;
+}
+
+.entre-em-contato{
+    display: flex;
+    width: 100%;
+    height: 874px;
+}
+.entre-em-contato .titulo{
+    width: 860px;
+    height: 874px;
+    background-color:white;
+    display: flex;
+    justify-content: end;
+}
+.entre-em-contato .titulo h2{
+    margin-bottom:-40px ;
+}
+.entre-em-contato .titulo .bloco{
+    margin: 40px;
+}
+.entre-em-contato .local,.entre-em-contato .horario{
+    width: 270px;
+}
+.dados{
+    padding-top: 100px;
+    width:100%;
+    display: flex;
+    background-color: #EEE;
+    flex-direction: column;
+}
+.dados .bloco-dados{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.dados .bloco-dados h2 {
+    color:#555;
+    font-size: 2rem;
+    font-weight: 400;
+}
+.dados .bloco-dados h2 strong{
+    color:#555;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.dados iframe{
+    margin-left: 70px;
+    width: 596px;
+    height: 196px;
+    border: solid 4px white;
+}
+.dados form > input{
+    width: 300px;
+    height: 30px;
+    border: none;
+    color:#555;
+    margin: 2px;
+    font-size: 1.5rem;
+}
+.dados .contato{
+    margin-left: 70px;
+}
+.dados form{
+    margin-left: 70px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 618px;
+    height: 152px;
+    
+}
+.dados .button{
+    width: 136px;
+    height: 30px;
+    font-family: 'open sans' sans-serif;
+    font-size: 1.4rem;
+    line-height: 19.6px;
+    font-weight: 400;
+    color:white;
+    border: none;
+    background-color: #F56A56;
+    margin: 4px;
+    margin-left: 168px;
+    
+}
+.dados .button:hover{
+    background-color: #CA2913;
+}
+.dados form > span>input{
+    width: 300px;
+    height: 100px;
+    font-size: 1.5rem;
+    border: none;
+    color:#555;
+    text-align: start;
+}
+.dados p{
+    color: black;
+    font-size:1.4rem;
+    font-weight: 21px;
+    letter-spacing: -0.14;
+    font-weight: 400;
+}
+.dados p strong{
+    font-weight: 700;
+}
+.dados h2 strong{    
+    color:#555;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.dados h2{ 
+    color:#555;
+    font-size: 2rem;   
+    font-weight: 400;
+}
+.ir-topo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #28ADD1;
+    height: 64.4px;
+    color: white;
+    font-size:1.4rem;
+    font-weight: 400;
+}
+.ir-topo img{
+    margin-left: 8px;
+    width: 20px;
+    transform: rotate(-90deg);
+}
+
+footer{
+    font-size: 1.3rem;
+    color:#555;
+    font-family: "Open sans",sans-serif;
+    font-weight: 400;
+    height: 52px;
+}
+footer >a{
+    color: #555;
+    text-decoration: none;
+}
+
+
