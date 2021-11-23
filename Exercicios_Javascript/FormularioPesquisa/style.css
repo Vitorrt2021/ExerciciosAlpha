@@ -47,7 +47,7 @@ button:hover{
     color: white;
 }
 .button__form{
-    width: 61.2%;
+    width: 950px;
     border: solid 2px black;
     border-top: none;
     display: flex;
@@ -91,7 +91,7 @@ form{
     align-items: center;
 
     background-color: white;
-    width: 50%;
+    width: 800px;
     border: solid 2px black;
     border-bottom: none;
 }
