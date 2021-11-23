@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="imagex/png" href="./assets/imagens/logo.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PizzariaChicago</title>
+</head>
+<body>
+    
+    <form>
+
+        <div class="container__form">
+            <div class="title__form">
+                <h1>Pesquisa de opinião</h1>
+                <img src="./assets/imagens/logo.jpg" alt="Logo PizzariaChicago">
+            </div>
+            <label for="name">Nome</label>
+            <input id='name' type="text">
+
+            
+            <label for="email">E-mail</label>
+            <input id='email' type="email">
+
+            
+            <label for="telephone">Telefone</label>
+            <input id='telephone' type="tel">
+
+            
+            <label for="estate">Estado</label>
+            <input id='estate' type="text">
+            <div class="flavor border_check">
+                <h3>Satisfação do sabor da comida</h3>
+                    <input type="radio" id="insatisfeito" name="flavor" value="Insatisfeito">
+                <label for="insatisfeito">Insatisfeito</label>
+                  <input type="radio" id="parcialmente" name="flavor" value="Parcialmente">
+                <label for="parcialmente">Parcialmente satisfeito</label>
+                  <input type="radio" id="satisfeito" name="flavor" value="Satisfeito">
+                <label for="satisfeito">Satisfeito</label>
+                  <input type="radio" id="Muito" name="flavor" value="Muito satisfeito">
+                <label for="Muito">Muito satisfeito</label>
+            </div> 
+            <div class="time border_check">
+                <h3>Satisfação do tempo da entrega</h3>
+                    <input type="radio" id="time_insatisfeito" name="time" value="Insatisfeito">
+                <label for="time_insatisfeito">Insatisfeito</label>
+                  <input type="radio" id="time_parcialmente" name="time" value="Parcialmente">
+                <label for="time_parcialmente">Parcialmente satisfeito</label>
+                  <input type="radio" id="time_satisfeito" name="time" value="Satisfeito">
+                <label for="time_satisfeito">Satisfeito</label>
+                  <input type="radio" id="time_Muito" name="time" value="Muito satisfeito">
+                <label for="time_Muito">Muito satisfeito</label>
+            </div> 
+            
+            <div class="treatment border_check">
+                <h3>Satisfação do serviço de atendimento</h3>
+                    <input type="radio" id="treatment_insatisfeito" name="treatment" value="Insatisfeito">
+                <label for="treatment_insatisfeito">Insatisfeito</label>
+                  <input type="radio" id="treatment_parcialmente" name="treatment" value="Parcialmente">
+                <label for="treatment_parcialmente">Parcialmente satisfeito</label>
+                  <input type="radio" id="treatment_satisfeito" name="treatment" value="Satisfeito">
+                <label for="treatment_satisfeito">Satisfeito</label>
+                  <input type="radio" id="treatment_Muito" name="treatment" value="Muito satisfeito">
+                <label for="treatment_Muito">Muito satisfeito</label>
+            </div>
+            <div class="show border_check">
+                <h3>Recomendaria</h3>
+                    <input type="radio" id="show_yes" name="show" value="Sim">
+                <label for="show_yes">Sim</label>
+                  <input type="radio" id="show_not" name="show" value="Não">
+                <label for="show_not">Não</label>    
+            </div> 
+ 
+        </div>
+    </form>
+    <div class='button__form'>
+        <button onclick="receberDados()">Salvar</button>
+        <button >Resetar</button>   
+    </div>
+    <main>
+        <div class="Result--name">
+            <h3>Nome</h3>
+            <p></p>
+        </div>
+        
+        <div class="Result--email">
+            <h3>E-mail</h3>
+            <p></p>
+        </div>
+        
+        <div class="Result--telephone">
+            <h3>Telefone</h3>
+            <p></p>
+        </div>
+        
+        <div class="Result--estate">
+            <h3>Estado</h3>
+            <p></p>
+        </div>
+        
+        <div class="Result--flavor">
+            <h3>Satisfação sabor da comida</h3>
+            <p></p>
+        </div>
+        
+        <div class="Result--time">
+            <h3>Satisfação tempo de entrega</h3>
+            <p></p>
+        </div>
+        
+        <div class="Result--treatment">
+            <h3>Satisfação serviço de atendimento</h3>
+            <p></p>
+        </div>
+        
+        <div class="Result--show">
+            <h3>Recomendaria</h3>
+            <p></p>
+        </div>
+    </main>
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>
