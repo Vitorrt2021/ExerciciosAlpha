@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="imagex/png" href="./assets/imagens/icone.png">
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburguer</title>
+</head>
+<body>
+
+    <form>
+        <h1>Faça seu pedido</h1>
+        <div class="container">
+            <div class='choice__form'>            
+                <div class="selection__form">
+                    
+                    <h2>Pão</h2>
+                    <input type="radio" id="france" name="pao" value="france">
+                    <label for="france">Pão Francês</label><br>
+                    <input type="radio" id="australiano" name="pao" value="australiano">
+                    <label for="australiano">Pão Australiano</label><br>
+                    <input type="radio" id="brioche" name="pao" value="brioche">
+                    <label for="brioche">Pão Brioche</label>
+                </div>
+                <img src="./assets/imagens/pao.jpg" alt="pao">
+            </div>
+            <div class="choice__form">            
+                <div class="selection__form">
+                
+                    <h2>Hambúrguer</h2>
+                    <input type="radio" id="picanha" name="carne" value="picanha">
+                    <label for="picanha">Hambúrguer de picanha</label><br>
+                    <input type="radio" id="costela" name="carne" value="costela">
+                    <label for="costela">Hambúrguer de costela</label><br>
+                    <input type="radio" id="vegano" name="carne" value="vegano">
+                    <label for="vegano">Hambúrguer de vegano</label>
+                </div>
+                <img src="./assets/imagens/carne.jpg" alt="carne">
+            </div>
+            <div class='choice__form'>            
+                <div class="selection__form">
+                    <h2>Salada</h2>
+                    <input type="radio" id="alface" name="salada" value="alface">
+                    <label for="alface">Alface</label><br>
+                    <input type="radio" id="tomate" name="salada" value="tomate">
+                    <label for="tomate">Tomate</label><br>
+                    <input type="radio" id="sem" name="salada" value="sem">
+                    <label for="sem">Sem</label>
+                </div>
+                <img src="./assets/imagens/salada.jpg" alt="salada">
+            </div>
+            
+            <div class='choice__form'>            
+                <div class="selection__form">
+                    <h2>Queijo</h2>
+                    <input type="radio" id="mussarela" name="queijo" value="mussarela">
+                    <label for="mussarela">Mussarela</label><br>
+                    <input type="radio" id="prato" name="queijo" value="prato">
+                    <label for="prato">Prato</label><br>
+                    <input type="radio" id="cheddar" name="queijo" value="cheddar">
+                    <label for="cheddar">Cheddar</label>
+                </div>
+                <img src="./assets/imagens/queijo.jpg" alt="queijo">
+            </div>
+
+        </div>
+        
+        <input id='send' type="submit">
+    </form>
+
+    <main>
+        <h2>Valor</h2>
+        
+        <div class="container__main">
+            <h2>O pedido foi</h2>    
+    
+            <h3>Pao</h3>
+            <p class="pao__main"> </p>
+            
+            <h3>Carne</h3>
+            <p class="carne__main"> </p>
+            
+            <h3>Salada</h3>
+            <p class="salada__main"> </p>
+            
+            <h3>Queijo</h3>
+            <p class="queijo__main"> </p>
+        </div>
+    </main>
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>
