@@ -2,7 +2,7 @@ const main = document.querySelector('main');
 const form = document.querySelector('form'); 
 const submit = document.querySelector('.submit-button');
 const backButton = document.querySelector('.back-button')
-const section = document.querySelector('section')
+const sectionResult = document.querySelector('.sectionResult')
 submit.addEventListener('click',stopDefAction)
 submit.addEventListener('click',changeScreens);
 let timeouts = [];
@@ -20,7 +20,7 @@ function backScreen(){
     backButton.style.display = "none";
     main.style.display ="none";
     main.innerHTML = '';
-    section.display = "none"
+    sectionResult.style.display = "none"
 
     
 }
@@ -30,6 +30,7 @@ function changeScreens(){
     form.style.display = 'none';
     backButton.style.display = "flex";
     main.style.display ="flex"
+    sectionResult.style.display = "none"
     write(num);
 }
 function createElementPhrase(cont){
