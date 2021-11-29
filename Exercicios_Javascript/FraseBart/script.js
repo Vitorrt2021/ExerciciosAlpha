@@ -105,6 +105,6 @@ function write(num){
             
             const title = document.querySelector('section > h1')
             title.textContent += contDelete;            
-            }, 2000*cont));
+            }, 2100*cont));
     }
 }
