@@ -69,5 +69,7 @@ main{
 }
 section{
     color: white;
+    margin-top: 10%;
     display: none;
+    flex-direction: column;
 }

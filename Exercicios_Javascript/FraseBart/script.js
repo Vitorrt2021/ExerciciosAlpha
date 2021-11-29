@@ -71,8 +71,9 @@ function write(num){
     let id=0;
     let contDelete=0;
     const numPhrase = Math.floor(Math.random() * 6);
-    if(num <0 ){
-        alert('Digite um numero positivo!')
+    if(num <=0 ){
+        alert('Digite um número positivo!')
+        backScreen();
     }
     else{
         while(cont <= num){
@@ -84,7 +85,7 @@ function write(num){
                 typeWriterPhrase(id,choosePhrase(numPhrase));
                 console.log(createElementPhrase(id))
                 id++;
-               }, 2000*cont));
+               }, 2100 *cont));
                contDelete++
             }else{
                 timeouts.push(setTimeout(() => {
@@ -92,7 +93,7 @@ function write(num){
                 typeWriterPhrase(id,choosePhrase(numPhrase));
                 console.log(createElementPhrase(id))
                 id++
-                }, 2000*cont));
+                }, 2100*cont));
             }
             cont++;
         }
@@ -104,7 +105,12 @@ function write(num){
             main.style.display = 'none'
             
             const title = document.querySelector('section > h1')
-            title.textContent += contDelete;            
-            }, 2000*cont));
+            title.textContent = "O número de vezes que apaguei o quadro foi "
+            title.textContent += contDelete;
+            
+            const title2 = document.querySelector('section > h2')
+            title2.textContent = 'A quantidade de linhas na tela final foi '
+            title2.textContent += (cont-1)%11 == 0 ? 11 : (cont-1)%11;            
+            }, 2200*cont));
     }
 }
