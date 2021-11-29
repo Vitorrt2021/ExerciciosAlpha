@@ -86,6 +86,7 @@ function write(num){
                 console.log(createElementPhrase(id))
                 id++;
                }, 2100 *cont));
+
                contDelete++
             }else{
                 timeouts.push(setTimeout(() => {
