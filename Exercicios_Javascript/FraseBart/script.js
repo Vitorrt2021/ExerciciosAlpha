@@ -84,7 +84,7 @@ function write(num){
                 typeWriterPhrase(id,choosePhrase(numPhrase));
                 console.log(createElementPhrase(id))
                 id++;
-               }, 2000*cont));
+               }, 2100*cont));
                contDelete++
             }else{
                 timeouts.push(setTimeout(() => {
@@ -92,7 +92,7 @@ function write(num){
                 typeWriterPhrase(id,choosePhrase(numPhrase));
                 console.log(createElementPhrase(id))
                 id++
-                }, 2000*cont));
+                }, 2100*cont));
             }
             cont++;
         }
@@ -105,6 +105,6 @@ function write(num){
             
             const title = document.querySelector('section > h1')
             title.textContent += contDelete;            
-            }, 2100*cont));
+            }, 2200*cont));
     }
 }
