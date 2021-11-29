@@ -2,6 +2,7 @@ const main = document.querySelector('main');
 const form = document.querySelector('form'); 
 const submit = document.querySelector('.submit-button');
 const backButton = document.querySelector('.back-button')
+const section = document.querySelector('section')
 submit.addEventListener('click',stopDefAction)
 submit.addEventListener('click',changeScreens);
 let timeouts = [];
@@ -19,6 +20,9 @@ function backScreen(){
     backButton.style.display = "none";
     main.style.display ="none";
     main.innerHTML = '';
+    section.display = "none"
+
+    
 }
 function changeScreens(){
     const repetitionValue = document.querySelector('.repetition-value');
@@ -97,6 +101,7 @@ function write(num){
             screen.style.display = "flex";
             
             main.style.display = 'none'
+            
             const title = document.querySelector('section > h1')
             title.textContent += contDelete;            
             }, 2000*cont));
