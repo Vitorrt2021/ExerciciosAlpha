@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
+
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    background-image: url(./assets/imagens/background.jpg);
+    background-size: cover;
+ 
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Fredericka the Great', cursive;
+}
+input{
+    text-align: center;
+    width: 200px;
+    height: 40px;
+    font-size: 30px;
+}
+.submit-button{
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px;
+    height: 40px;
+    width: 210px;
+}
+
+form{
+    background-image: url(./assets/imagens/quadro-negro-verde.png);
+    background-size: cover;
+    
+    width: 400px;
+    height: 200px;
+    margin-top: 10%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+main{
+    margin-top: 40px;
+    margin-left: 60px;
+
+    font-size: 25px;
+    display: none;
+    
+    flex-direction: column;
+    flex-wrap: nowrap;
+    
+    line-height: 5px;
+    
+    color: white;
+}
+
+.back-button{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 30px;
+    font-weight: 700;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+section{
+    color: white;
+    display: none;
+}
