@@ -18,6 +18,8 @@ function backScreen(){
         clearTimeout(timeouts[i]);
     }
     timeouts = []
+    contDelete=0;
+    numLines=0;
     form.style.display = 'flex';
     backButton.style.display = "none";
     main.style.display ="none";
@@ -29,6 +31,9 @@ function backScreen(){
 function changeScreens(){
     const repetitionValue = document.querySelector('.repetition-value');
     let num = +repetitionValue.value
+    contDelete=0;
+    numLines=0;
+    
     form.style.display = 'none';
     backButton.style.display = "flex";
     main.style.display ="flex"
@@ -45,7 +50,6 @@ function choosePhrase(num){
         "Cerveja numa caixa de leite não é leite "
     ];
     let phrase = PHRASE[num];
-    phrase ="A professora não levou um fora, foi mutuo      ";
     return phrase;
 }
 function typeWriterPhrase(PHRASE){

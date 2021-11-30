@@ -48,9 +48,7 @@ function choosePhrase(num){
         "Cerveja numa caixa de leite não é leite"
     ];
     let phrase = PHRASE[num];
-    //return phrase;
-    let a = "A professora não levou um fora, foi mutuo"
-    return a;
+    return phrase;
 }
 function typeWriterPhrase(cont,PHRASE){
     
