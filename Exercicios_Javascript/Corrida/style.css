@@ -3,7 +3,7 @@ body{
     margin: 0;
     padding: 0;
 
-    background-image: url(./assets/imagens/background.webp);
+    background-image: url(./assets/imagens/background.jpg);
     background-size: cover;
     
     display: flex;
@@ -21,6 +21,10 @@ button{
 button:hover{
     cursor: pointer;
     background-color: rgb(131, 114, 131);
+}
+.escolherModoPagina{
+    display: flex;
+    flex-direction: column;
 }
 .confirmar--escolherModo--preSelecionado,
 .confirmar--escolherModo--aleatorio{
@@ -65,6 +69,9 @@ ul{
     display: flex;
     flex-direction: column;
 }
+.escolherAleatorio{
+    display: none;
+}
 .voltar-primeiraPagina{
     position:absolute;
     top: 50px;
@@ -78,5 +85,11 @@ ul{
     display: none;
 }
 .resultado{
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(256,256,256,0.9);
+
+    margin-top: 20vh;
+    width: 60vw;
     display: none;
 }

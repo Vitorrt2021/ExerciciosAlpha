@@ -32,14 +32,38 @@ function IrPaginaEscolherModo(participantes){
     const escolherModoContainer = document.querySelector('.escolherModoContainer');
     escolherModoContainer.style.display = 'flex';
   
-    //Escolher modo estava executando mais de uma vez
     jaExecutou = false;
-    if(participantes == "aleatorio"){
-
+    if(participantes === "aleatorio"){
+        console.log('Aleatorio')
+        escolherAleatorio();
     }else{
+        console.log('Outro')
         escolherModo()
     }
 
+}
+function escolherAleatorio(){
+    const escolherAleatorio = document.querySelector('.escolherAleatorio')
+    escolherAleatorio.style.displ = 'flex'
+    const nomeAdicionar = document.querySelector('.inputNome')
+    let corredores = []
+    
+    const numeroVoltas = document.querySelector('.numVoltas')
+    
+    const adicionarCorredor = document.querySelector('.adicionarCorredor')
+    adicionarCorredor.addEventListener('click',function (){
+        if(nomeAdicionar != undefined){
+            let velocidadeMax =  Math.floor(Math.random() * (280 - 200)) + 200
+            let velocidadeMin = Math.floor(Math.random() * (150 - 100)) + 100 
+            let derrapagem =  Math.floor(Math.random() * (8 - 1)) + 1
+            let n = new runner(nomeAdicionar,velocidadeMax,velocidadeMin,derrapagem);
+            corredores.push(n)
+        }
+    })
+    const irResultado = document.querySelector('.irResultado');
+    irResultado.addEventListener('click',function(){
+        correr(numeroVoltas.value,corredores)
+    })
 }
 function IrPrimeiraPagina(){
     const escolherParticipantes = document.querySelector('.escolherParticipantes')
@@ -49,6 +73,8 @@ function IrPrimeiraPagina(){
     const voltarPrimeiraPagina = document.querySelector('.voltar-primeiraPagina')
     voltarPrimeiraPagina.style.display = 'none';
 
+    const escolherAleatorio = document.querySelector('.escolherAleatorio')
+    escolherAleatorio.style.displ = 'none'
     
     const escolherModoPagina = document.querySelector('.escolherModoPagina');
     escolherModoPagina.style.display = 'none';
@@ -126,7 +152,10 @@ function IrPaginaResultado(){
     
     const escolherModoPagina = document.querySelector('.escolherModoPagina');
     escolherModoPagina.style.display = 'none';
-  
+
+    const escolherAleatorio = document.querySelector('.escolherAleatorio')
+    escolherAleatorio.style.displ = 'none'
+
     const resultado = document.querySelector('.resultado')
     resultado.style.display = 'flex'
     
