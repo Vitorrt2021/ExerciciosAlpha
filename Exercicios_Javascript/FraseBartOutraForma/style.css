@@ -1,20 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
 
-html{
-    font-size: 10px;
-}
-@media (max-width: 555px)
-{
-    html{
-        font-size: 7px;
-    }
-}
-@media (max-width: 400px)
-{
-    html{
-        font-size: 5px;
-    }
-}
 body{
     margin: 0;
     padding: 0;
@@ -22,6 +7,7 @@ body{
 
     background-image: url(./assets/imagens/background.jpg);
     background-size: cover;
+ 
     display:flex ;
     align-items: center;
     justify-content: center;
@@ -32,10 +18,10 @@ input{
     text-align: center;
     width: 200px;
     height: 40px;
-    font-size: 3rem;
+    font-size: 30px;
 }
 .submit-button{
-    font-size: 2rem;
+    font-size: 20px;
     font-weight: 700;
     margin: 10px;
     height: 40px;
@@ -59,14 +45,14 @@ main{
     margin-top: 40px;
     margin-left: 60px;
 
-    font-size: 2.5rem;
+    font-size: 25px;
     display: none;
     
     flex-direction: column;
     flex-wrap: nowrap;
     
-    line-height: 5px;
-    
+    line-height: 30px;
+
     color: white;
 }
 
@@ -86,7 +72,4 @@ section{
     margin-top: 10%;
     display: none;
     flex-direction: column;
-}
-section h2,section h1{
-    font-size: 3rem;
 }
