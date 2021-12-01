@@ -22,8 +22,25 @@ button:hover{
     cursor: pointer;
     background-color: rgb(131, 114, 131);
 }
-.escolherModoPagina{
+.escolherAleatorio{
     display: flex;
+    flex-direction: column;
+}
+.escolherAleatorio >div{
+    margin: 10px;
+}
+.escolherAleatorio div>input{
+    height: 25px;
+    font-size: 15px;
+}
+.escolherAleatorio > input{
+    text-align: center;
+    height: 25px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.escolherModoPagina{
+    display: none;
     flex-direction: column;
 }
 .confirmar--escolherModo--preSelecionado,
@@ -68,6 +85,9 @@ ul{
 .resultado{
     display: flex;
     flex-direction: column;
+    height: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 .escolherAleatorio{
     display: none;

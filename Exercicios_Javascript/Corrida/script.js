@@ -2,13 +2,42 @@ let posicoes=0;
 let jaExecutou = false;
 const resultadoScreen = document.querySelector('.resultado')
 let classificacao = document.querySelector('.classificacao')
+
+const voltarPrimeiraPagina = document.querySelector('.voltar-primeiraPagina')
+const resultado = document.querySelector('.resultado')
+const escolherModoPagina = document.querySelector('.escolherModoPagina');
+const escolherModoContainer = document.querySelector('.escolherModoContainer');
+const escolherParticipantes = document.querySelector('.escolherParticipantes')
+const escolherAleatorio = document.querySelector('.escolherAleatorio')
+const nomeAdicionar = document.querySelector('.inputNome')
+const irResultado = document.querySelector('.irResultado');
+const confirmarEscolherModoPre = document.querySelector('.confirmar--escolherModo--preSelecionado')
+
+voltarPrimeiraPagina.addEventListener('click',IrPrimeiraPagina)
 IrPrimeiraPagina()
 
-//criar script para caso de empate
-//Mudar o modo aleatio escolha primeira pagina
 
+
+
+confirmarEscolherModoPre.addEventListener('click',modoPreSelecionado)
+const confirmarEscolherModoAle = document.querySelector('.confirmar--escolherModo--aleatorio')
+confirmarEscolherModoAle.addEventListener('click',EscolherAleatorio)
+
+const corridaRapida = document.querySelector('.corridaRapida')
+corridaRapida.addEventListener('click',function (){correrBasico(10)})
+const grandePremio = document.querySelector('.grandePremio')
+grandePremio.addEventListener('click',function (){correrBasico(70)})
+const enduro = document.querySelector('.enduro')
+enduro.addEventListener('click',function (){correrBasico(160)})
+
+function modoPreSelecionado(){
+    voltarPrimeiraPagina.style.display = 'block'
+    escolherModoPagina.style.display = 'flex';
+    escolherModoContainer.style.display = 'flex';
+    escolherParticipantes.style.display = 'none'
+    jaExecutou = false;
+}
 function criarDivClassificacao(){
-    const resultado = document.querySelector('.resultado')
     resultado.style.display = 'none'
     
     //remover de classficacao
@@ -18,88 +47,46 @@ function criarDivClassificacao(){
     resultado.append(classificacao)
 
 }
-function IrPaginaEscolherModo(participantes){
-    const voltarPrimeiraPagina = document.querySelector('.voltar-primeiraPagina')
-    const escolherParticipantes = document.querySelector('.escolherParticipantes')
-    
+function EscolherAleatorio(){
+ 
     escolherParticipantes.style.display = 'none' 
-    voltarPrimeiraPagina.addEventListener('click',IrPrimeiraPagina)
     voltarPrimeiraPagina.style.display = 'block'
-
-    const escolherModoPagina = document.querySelector('.escolherModoPagina');
-    escolherModoPagina.style.display = 'flex';
-  
-    const escolherModoContainer = document.querySelector('.escolherModoContainer');
-    escolherModoContainer.style.display = 'flex';
+    voltarPrimeiraPagina.addEventListener("click", function() {
+        location.reload();
+    });
+    criarDivClassificacao()
+    posicoes=0;
   
     jaExecutou = false;
-    if(participantes === "aleatorio"){
-        console.log('Aleatorio')
-        escolherAleatorio();
-    }else{
-        console.log('Outro')
-        escolherModo()
-    }
-
-}
-function escolherAleatorio(){
-    const escolherAleatorio = document.querySelector('.escolherAleatorio')
-    escolherAleatorio.style.displ = 'flex'
-    const nomeAdicionar = document.querySelector('.inputNome')
+    escolherAleatorio.style.display = 'flex'
     let corredores = []
-    
-    const numeroVoltas = document.querySelector('.numVoltas')
-    
     const adicionarCorredor = document.querySelector('.adicionarCorredor')
     adicionarCorredor.addEventListener('click',function (){
-        if(nomeAdicionar != undefined){
+        if(nomeAdicionar.value != undefined){
             let velocidadeMax =  Math.floor(Math.random() * (280 - 200)) + 200
             let velocidadeMin = Math.floor(Math.random() * (150 - 100)) + 100 
             let derrapagem =  Math.floor(Math.random() * (8 - 1)) + 1
-            let n = new runner(nomeAdicionar,velocidadeMax,velocidadeMin,derrapagem);
+            let n = new runner(nomeAdicionar.value,velocidadeMax,velocidadeMin,derrapagem);
             corredores.push(n)
         }
     })
-    const irResultado = document.querySelector('.irResultado');
-    irResultado.addEventListener('click',function(){
+    irResultado.addEventListener('click',function(){        
+        const numeroVoltas = document.querySelector('.numVoltas')    
         correr(numeroVoltas.value,corredores)
     })
 }
 function IrPrimeiraPagina(){
-    const escolherParticipantes = document.querySelector('.escolherParticipantes')
-    escolherParticipantes.style.display = 'flex'
-
-    
-    const voltarPrimeiraPagina = document.querySelector('.voltar-primeiraPagina')
+    escolherParticipantes.style.display = 'flex'    
     voltarPrimeiraPagina.style.display = 'none';
-
-    const escolherAleatorio = document.querySelector('.escolherAleatorio')
-    escolherAleatorio.style.displ = 'none'
-    
-    const escolherModoPagina = document.querySelector('.escolherModoPagina');
+    escolherAleatorio.style.display = 'none'
     escolherModoPagina.style.display = 'none';
-  
-    const escolherModoContainer = document.querySelector('.escolherModoContainer');
     escolherModoContainer.style.display = 'none';
-  
-    
-    const resultado = document.querySelector('.resultado')
     resultado.style.display = 'none'
     
     //remover de classficacao
     criarDivClassificacao()
     posicoes=0;
     //
-    const confirmarEscolherModoPre = document.querySelector('.confirmar--escolherModo--preSelecionado')
-    confirmarEscolherModoPre.addEventListener('click',function(){
-        IrPaginaEscolherModo('Pre-selecionado');
-    })
-    const confirmarEscolherModoAle = document.querySelector('.confirmar--escolherModo--aleatorio')
-    confirmarEscolherModoAle.addEventListener('click',function() {
-        IrPaginaEscolherModo('aleatorio');
-    })
-        
-    
 }
 
 function criarPosicao(nome,vencidas){
@@ -138,25 +125,10 @@ class runner {
         this.qtdVencida++;
     }
 }
-//rodou mais vezes quando clico em pre-selecionado
-function escolherModo(){
-    console.log('Escolher Modo;')
-    const corridaRapida = document.querySelector('.corridaRapida')
-    corridaRapida.addEventListener('click',function (){correrBasico(10)})
-    const grandePremio = document.querySelector('.grandePremio')
-    grandePremio.addEventListener('click',function (){correrBasico(70)})
-    const enduro = document.querySelector('.enduro')
-    enduro.addEventListener('click',function (){correrBasico(160)})
-}
 function IrPaginaResultado(){
     
-    const escolherModoPagina = document.querySelector('.escolherModoPagina');
     escolherModoPagina.style.display = 'none';
-
-    const escolherAleatorio = document.querySelector('.escolherAleatorio')
-    escolherAleatorio.style.displ = 'none'
-
-    const resultado = document.querySelector('.resultado')
+    escolherAleatorio.style.display = 'none'
     resultado.style.display = 'flex'
     
     const escolherModoContainer = document.querySelector('.escolherModoContainer');
@@ -218,13 +190,3 @@ function correr(voltas,runners){
     }
     IrPaginaResultado();
 }
-
-/*
-function compararVelocidade(a=0 , b=0) {
-    return a.velocidade - b.velocidade;
-}
-
-function compararQtdVencida(a=0, b=0) {
-    return a.qtdVencida - b.qtdVencida;
-}
-*/
