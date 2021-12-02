@@ -17,8 +17,10 @@ input{
     font-size: 100px;
 }
 .matriz{
-    padding: 50px;
+    width: 300px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 .linha{

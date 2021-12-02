@@ -20,7 +20,7 @@ function adcionarEventListener(){
                 titulo.innerHTML = " ";
 
                 if(checkMatriz(setarMatriz(Elemento.id))){
-                    titulo.innerHTML = 'Parabens jogador '+jogador + "ganhow!!";
+                    titulo.innerHTML = 'Parabens jogador '+jogador + " ganhou!!";
                     resetar()
                 }
             })
