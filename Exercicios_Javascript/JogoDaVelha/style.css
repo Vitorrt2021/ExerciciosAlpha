@@ -1,0 +1,33 @@
+body{
+    margin:0;
+    padding: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: gray;
+}
+input{
+    width: 100px;
+    height: 100px;
+    border: solid 2px black;
+    margin: 4px;
+    font-size: 100px;
+}
+.matriz{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.linha{
+    display: flex;;
+}
+.linha  button{
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: white;
+}
