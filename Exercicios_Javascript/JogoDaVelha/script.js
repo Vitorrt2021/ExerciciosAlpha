@@ -1,7 +1,7 @@
 let jogador1=0;
 let jogador2=0;
 let contador=0
-let matriz = [[" "," "," "],[" "," "," "],[" "," "," "]]
+let matriz = [[3,3,3],[3,3,3],[3,3,3]]
 const TAMANHO = 3;
 let jogador=1;
 const Jogador1V = document.querySelector('#jogador1')
@@ -21,15 +21,16 @@ function adcionarEventListener(){
         for(let l=0;l<TAMANHO;l++){
             let Elemento = document.getElementById("elemento-"+i+"-"+l)
             Elemento.addEventListener('click',function () {
-                trocarBackground(Elemento) 
+                
                 const titulo = document.querySelector('.matriz > h1')
                 titulo.innerHTML = " ";
                 contador++;
                 Jogador2V.innerHTML = "Jogador 2 : "+ jogador2
                 Jogador1V.innerHTML = "Jogador 1 : "+ jogador1
-
+                trocarBackground(Elemento) 
+            
                 if(checkMatriz(setarMatriz(Elemento.id))){
-                    titulo.innerHTML = 'Parabens jogador '+jogador + " ganhou!!";
+                    titulo.innerHTML = 'Parabéns jogador '+jogador + " ganhou!!";
                     resetar()
                     if(jogador ==1 ){
                         jogador1++;
@@ -40,6 +41,7 @@ function adcionarEventListener(){
                     titulo.innerHTML = 'Empate'
                     resetar()
                 }
+                
             })
         }
     }
@@ -47,7 +49,7 @@ function adcionarEventListener(){
 function resetar(){
     contador=0;
     const titulo = document.querySelector('.matriz > h1')
-    matriz = [[" "," "," "],[" "," "," "],[" "," "," "]]
+    matriz = [[3,3,3],[3,3,3],[3,3,3]]
     for(let i=0;i<TAMANHO;i++){
         for(let l=0;l<TAMANHO;l++){
             let a =document.getElementById("elemento-"+i+"-"+l)
@@ -56,27 +58,33 @@ function resetar(){
     }   
 }
 function trocarBackground(elemento){
-    if(jogador == 1){
-        console.log('trocar background : '+ jogador)
-        elemento.style.backgroundImage = 'url(./assets/imagens/bola.png)'
-        jogador=2;
-    }else{
-        console.log('trocar background : '+ jogador)
-        elemento.style.backgroundImage = 'url(./assets/imagens/x.png)'
-        jogador=1;
+    let id = elemento.id
+    let linha = +id[id.length -3]
+    let coluna = +id[id.length -1]
+    if(matriz[linha][coluna] == 3){
+        if(jogador == 1){
+            console.log('trocar background : '+ jogador)
+            elemento.style.backgroundImage = 'url(./assets/imagens/bola.png)'
+            jogador=2;
+        }else{
+            console.log('trocar background : '+ jogador)
+            elemento.style.backgroundImage = 'url(./assets/imagens/x.png)'
+            jogador=1;
+        }
     }
 }
 function setarMatriz(elemento){
     let id = elemento 
     let linha = +id[id.length -3]
     let coluna = +id[id.length -1]
-    
-    matriz[linha][coluna] = jogador;
+    if(matriz[linha][coluna] == 3){
+        matriz[linha][coluna] = jogador;
+    }
     return matriz;
 }
 function checkLinha(array){
     let jogada = array[0];
-    if(!(jogada === ' ')){
+    if(!(jogada == 3)){
         for(let i=0;i<array.length;i++){
             if(jogada !== array[i]){
                 return false
