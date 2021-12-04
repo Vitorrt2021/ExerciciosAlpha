@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class='voltar-primeiraPagina'>Voltar</button>
+    <section class="escolherParticipantes">
+        <h2>Corredores</h2>
+        <div class="conteudo">
+            <button class='confirmar--escolherModo--preSelecionado'> Pré-Selecionado </button>
+   
+            <button class='confirmar--escolherModo--aleatorio'> Aleatório </button>
+        </div>
+    </section>
+    
+    <section class="escolherModoPagina">
+        <h2>Tipo</h2>
+        <div class="escolherModoContainer escolhas--escolherModo">
+            
+            <button class="corridaRapida"> Corrida rápida: 10 Voltas</button>
+            <button class="grandePremio"> Grande Prêmio:  70 Voltas</button>
+            <button class="enduro"> Enduro:  160 Voltas</button>
+        </div>
+    </section>
+    <section class="escolherAleatorio">
+        <h2>Adicionar corredores</h2>
+        <div class="corredores">
+            <input class='inputNome' type="text" placeholder="Nome corredor">
+            <button class='adicionarCorredor'>Adicionar</button>
+        </div>
+        <input class='numVoltas' type="number" placeholder="Número voltas">
+        <button class='irResultado'> Confirmar </button>
+    </section>
+    <section class="resultado">
+        <li class='classificacao--corredor'>
+            <ul class="classificacao--nome"><strong>Nome</strong></ul>
+            <ul class="classificacao--vencidas"><strong>Voltas Vencidas</strong></ul>
+        </li>
+        <div class='classificacao'>  
+        </div>
+    </section>
+
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>
