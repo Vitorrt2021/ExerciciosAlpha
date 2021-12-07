@@ -1,0 +1,45 @@
+html{
+    font-size: 10px;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100%;
+
+    overflow-x: hidden;
+}
+main{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    font-size: 1.5rem;
+    height: 50px;
+    width: 150px;
+}
+.buttons{
+    width: 515px;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resultado{
+    display: flex;
+    flex-direction: column;
+}
+
+li{
+    font-size: 2rem;
+    padding-right: 10px;
+    border: 2px solid gray;
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+}
