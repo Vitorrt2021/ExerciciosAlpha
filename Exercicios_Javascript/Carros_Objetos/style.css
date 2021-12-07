@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 html{
     font-size: 10px;
 }
@@ -10,6 +11,10 @@ body{
     width: 100%;
 
     overflow-x: hidden;
+    
+    font-family: 'Roboto',sans-serif;
+    background-color: black;
+    color: white;
 }
 main{
     flex-direction: column;
@@ -21,6 +26,13 @@ button{
     font-size: 1.5rem;
     height: 50px;
     width: 150px;
+    background-color: #000ADB;
+    border: none;
+    border-radius: 10%;
+    color: white;
+}button:hover{
+    background-color: #00066B;
+    color: #eee;
 }
 .buttons{
     width: 515px;

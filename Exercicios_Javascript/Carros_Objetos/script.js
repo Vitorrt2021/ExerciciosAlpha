@@ -33,8 +33,8 @@ function adicionarClassificado(corredor){
     elementoNome.setAttribute('class','classificacao--nome')
     const  elementoVenceu = document.createElement('ul')
     elementoVenceu.setAttribute('class','classificacao--vencidas')
-    elementoVenceu.append(corredor[1]);
-    elementoNome.append( (posicoes+1) +"º  "+corredor[0]);
+    elementoVenceu.append(corredor.qtd_vencidas);
+    elementoNome.append( (posicoes+1) +"º  "+corredor.nome);
     RESULTADO.append(criarPosicao(elementoNome,elementoVenceu));
 }
 
@@ -57,6 +57,7 @@ let carros = {
       "derrapagem": {"min": "1", "max": "1.75"}
     }
 }
+
 function calcularVelocidade(velocidadeMax,velocidadeMin,derrapagem) {
     let velocidade = 0;
     velocidade = Math.floor(Math.random() * (velocidadeMax - velocidadeMin)) + velocidadeMin
@@ -82,37 +83,59 @@ function intAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 function criarCorredores(){
-    let Edna = iniciarCarros()
-    let Pedro = iniciarCarros()
-    let Juca = iniciarCarros()
-    let corredores = [Edna,Pedro,Juca]
-    return corredores
-}
-function novaVelocidade(matriz){
+    let corredores  = {
+        "Edna":{
+            "nome" : "Edna",
+            "velocidade": "0",
+            "qtd_vencidas": 0,
+            "carro": "0"
+        },
+        "Juca":{
+            "nome" : "Juca",
+            "velocidade": "0",
+            "qtd_vencidas": 0,
+            "carro": "0"
+        },
+        "Pedro":{
+            "nome" : "Pedro",
+            "velocidade": "0",
+            "qtd_vencidas": 0,
+            "carro": "0"
+        }
+    }
     
-    for(let i=0;i<matriz.length;i++){
+    corredores.Edna['carro'] = iniciarCarros()
+    corredores.Juca['carro'] = iniciarCarros()
+    corredores.Pedro['carro'] = iniciarCarros()
+    console.log(corredores)
+    let c = [corredores.Edna,corredores.Pedro,corredores.Juca]
+    return c
+}
+function novaVelocidade(array){
+    
+    for(let i=0;i<array.length;i++){
         let corredores = []
-        corredores[i] = matriz[i][3];
-        let maxVelocidade = parseInt(corredores[i].velocidade_maxima.max)
-        let minVelocidade = parseInt(corredores[i].velocidade_maxima.min)
+        corredores = array[i].carro;
+        let maxVelocidade = parseInt(corredores.velocidade_maxima.max)
+        let minVelocidade = parseInt(corredores.velocidade_maxima.min)
         let velocidadeMax = intAleatorio(minVelocidade,maxVelocidade)
         
         
 
-        maxVelocidade = parseInt(corredores[i].velocidade_minima.max)
-        minVelocidade = parseInt(corredores[i].velocidade_minima.min)
+        maxVelocidade = parseInt(corredores.velocidade_minima.max)
+        minVelocidade = parseInt(corredores.velocidade_minima.min)
         let velocidadeMin = intAleatorio(minVelocidade,maxVelocidade)
 
-        maxVelocidade = parseInt(corredores[i].derrapagem.max)
-        minVelocidade = parseInt(corredores[i].derrapagem.min)
+        maxVelocidade = parseInt(corredores.derrapagem.max)
+        minVelocidade = parseInt(corredores.derrapagem.min)
 
         let derrapagem =  intAleatorio(minVelocidade,maxVelocidade)
 
-        matriz[i][2] 
-        = calcularVelocidade(velocidadeMin,velocidadeMax,derrapagem);
-     
+        array[i].velocidade = calcularVelocidade(velocidadeMin,velocidadeMax,derrapagem);
+        
     }
-    return matriz
+    console.log('array: '+array)
+    return array
 }
 function criarMatrizCorredores(corredores,nomes){
     //0 nome, 1 qTVENCIADAS, 2 velocidade vencidas,3 objeto 
@@ -125,12 +148,6 @@ function criarMatrizCorredores(corredores,nomes){
     }
     return matriz
 }
-function mostrarCorredores(){
-    const nomeCorredores = ["Edna","Pedro","Juca"]
-    const matriz = criarMatrizCorredores(criarCorredores(),nomeCorredores)    
-    
-}
-   
 
 function correr(voltas,runners){
        
@@ -139,20 +156,20 @@ function correr(voltas,runners){
 
         runners.sort(
             function(a, b) {
-                return a[2] - b[2];
+                return a.velocidade - b.velocidade;
             }
         );
-        runners[0][1]++
+        runners[0].qtd_vencidas++
     }
     runners.sort(function (a, b) {
-        return b[1]-a[1] ;
+        return b.velocidade-a.velocidade ;
     }
     );
-    if(runners[0][1] == runners[1][1]){
+    if(runners[0].qtd_vencidas == runners[1].qtd_vencidas){
         let rodadaEmpate = [];
         let cont=0;
         //pegar os que tem a mesma quantidade de vitoria
-        while(runners[cont][2] == runners[0][2]){
+        while(runners[cont].qtd_vencidas == runners[0].qtd_vencidas){
             rodadaEmpate.push(runners[cont])
             cont++
         }
@@ -160,26 +177,26 @@ function correr(voltas,runners){
         rodadaEmpate = novaVelocidade(rodadaEmpate)
         rodadaEmpate.sort(
             function(a, b) {
-                return b[2] - a[2];
+                return b.velocidade - a.velocidade;
             }
         );
         //Adicionar a vitoria ao vencedor
         for(let g=0;g<rodadaEmpate.length;g++){
-            if(runners[g][0] == rodadaEmpate[0][0]){
-                runners[g][1]++;
+            if(runners[g].nome == rodadaEmpate[0].nome){
+                runners[g].qtd_vencidas++;
             }
         }
     }
     runners.sort(function (a, b) {
-        return b[1]-a[1] ;
+        return b.qtd_vencidas-a.qtd_vencidas ;
     })
     return runners
 }
 
 function ResultadoCorrer(voltas){
-    const nomeCorredores = ["Edna","Pedro","Juca"] 
-    const matriz = criarMatrizCorredores(criarCorredores(),nomeCorredores)    
-    let resultado = correr(voltas,matriz)
+
+    const array = criarCorredores()    
+    let resultado = correr(voltas,array)
 
     for(let i=0;i<resultado.length;i++){
         adicionarClassificado(resultado[i])
