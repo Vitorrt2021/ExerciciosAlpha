@@ -24,10 +24,11 @@ function addEventListeners(){
 
 }
 
-function criarPosicao(nome,vencidas){
+function criarPosicao(nome,vencidas,nivel){
     const posicao = document.createElement('li')
     posicao.setAttribute('id','posicao-'+posicoes);
     posicao.append(nome);
+    posicao.append(nivel);
     posicao.append(vencidas);
     posicoes++;
     return posicao;
@@ -38,9 +39,13 @@ function adicionarClassificado(corredor){
     elementoNome.setAttribute('class','classificacao--nome')
     const  elementoVenceu = document.createElement('ul')
     elementoVenceu.setAttribute('class','classificacao--vencidas')
+    
+    const  elementoNivel = document.createElement('ul')
+    elementoNivel.setAttribute('class','classificacao--nivel')
+    elementoNivel.append("Nivel: "+corredor.nivel)
     elementoVenceu.append(corredor.qtd_vencidas);
-    elementoNome.append( (posicoes+1) +"º  "+corredor.nome+"      Nivel: "+ corredor.nivel);
-    RESULTADO.append(criarPosicao(elementoNome,elementoVenceu));
+    elementoNome.append( (posicoes+1) +"º  "+corredor.nome);
+    RESULTADO.append(criarPosicao(elementoNome,elementoVenceu,elementoNivel));
 }
 
 
@@ -162,7 +167,7 @@ function novaVelocidade(array){
         let derrapagem =  intAleatorio(minVelocidade,maxVelocidade)
 
         console.log(corredores.velocidadeMax)
-        
+
         corredores.velocidadeMax += corredores.velocidadeMax * (0.01 * corredores.nivel)
         corredores.velocidadeMin += corredores.velocidadeMin * (0.01 * corredores.nivel)
 
