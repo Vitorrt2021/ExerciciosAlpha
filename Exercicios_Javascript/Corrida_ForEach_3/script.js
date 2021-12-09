@@ -96,17 +96,14 @@ let corredores  = {
 }
 
 function passarNivel(element){
-   
         if(element.nivel < 10){
             element.nivel = Math.floor(parseInt(element.pontos)/450)
         }
         if(element.nivel > 10){
             element.nivel = 10;
         }
-        element.velocidadeMax += velocidadeMax * (0.01 * nivel)
-        element.velocidadeMin += velocidadeMin * (0.01 * nivel)
 }
-function calcularVelocidade(velocidadeMax,velocidadeMin,derrapagem,nivel) {
+function calcularVelocidade(velocidadeMax,velocidadeMin,derrapagem) {
     let velocidade = 0;
     velocidade = Math.floor(Math.random() * (velocidadeMax - velocidadeMin)) + velocidadeMin
     velocidade -= velocidade * (derrapagem/100);
@@ -156,14 +153,20 @@ function novaVelocidade(array){
         
         maxVelocidade = parseInt(corredores.carro.vel_min.max)
         minVelocidade = parseInt(corredores.carro.vel_min.min)
-
+      
         corredores.velocidadeMin = intAleatorio(minVelocidade,maxVelocidade)
 
         maxVelocidade = parseInt(corredores.carro.derrapagem.max)
         minVelocidade = parseInt(corredores.carro.derrapagem.min)
 
         let derrapagem =  intAleatorio(minVelocidade,maxVelocidade)
+
+        console.log(corredores.velocidadeMax)
         
+        corredores.velocidadeMax += corredores.velocidadeMax * (0.01 * corredores.nivel)
+        corredores.velocidadeMin += corredores.velocidadeMin * (0.01 * corredores.nivel)
+
+        console.log(corredores.velocidadeMax)
         corredores.velocidade = calcularVelocidade(corredores.velocidadeMin,corredores.velocidadeMax,derrapagem,nivel);
         
     }
@@ -215,10 +218,20 @@ function correr(voltas,runners){
         return b.qtd_vencidas-a.qtd_vencidas ;
     })
     //Passar os pontos
-    runners[0].pontos += 200
-    runners[1].pontos += 120
-    runners[2].pontos += 50
-     
+    if(voltas == 10){
+        runners[0].pontos += 200
+        runners[1].pontos += 120
+        runners[2].pontos += 50
+    }else if(voltas == 70){
+        runners[0].pontos += 220
+        runners[1].pontos += 130
+        runners[2].pontos += 75
+    }else{
+        runners[0].pontos += 250
+        runners[1].pontos += 150
+        runners[2].pontos += 90
+    }
+    console.log()
     return runners
 }
 
