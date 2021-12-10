@@ -1,0 +1,42 @@
+body{
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: aquamarine;
+}
+
+form{
+    background-color: white;
+    width: 700px; 
+    display: flex;
+    flex-direction: column;
+
+}
+
+input,label{
+    margin: 5px;
+}
+
+.purchases{
+    display: none;
+    width: 700px;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+}
+
+li{
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px rgb(0, 0, 0);
+}
+ul{
+    width: 150px;
+}
+.purchases__calculate{display: flex;}
