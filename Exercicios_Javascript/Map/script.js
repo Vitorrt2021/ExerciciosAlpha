@@ -1,7 +1,6 @@
 const SALES = [];
 
 
-
 function calculateInterestValue(date){
     let data = new Date();
     let day = String(data.getDate()).padStart(2, '0');
@@ -13,9 +12,9 @@ function calculateInterestValue(date){
     let timeDifference = date2.getTime() - date1.getTime()
     let daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24)); 
     if(timeDifference <= 0){
-        return 0
+        return (Math.abs(daysDifference)*0.001)+0.02
     }else{
-        return daysDifference*0.1     
+        return 0
     }
 }
 
@@ -24,6 +23,7 @@ function Sale(name, date,price) {
     this.name = name;
     this.date = date;
     this.price = price;
+    this.price_interest=0;
     this.interest = calculateInterestValue(date);
 }
 
@@ -32,7 +32,8 @@ function addSales(){
     let name = values[0] 
     let date = values[1]
     let price = values[2]
-    SALES.push(new Sale(name,date,price))
+    let sale = new Sale(name,date,price)
+    SALES.push(sale)
 }
 
 function stopDefAction(evt) {
@@ -48,14 +49,13 @@ function initializeButtons(){
     
     const FORM_TABLE = document.querySelector("#form_table");
     FORM_TABLE.addEventListener('click',stopDefAction)
-    FORM_TABLE.addEventListener('click',function (){showTable(),createTable()})    
+    FORM_TABLE.addEventListener('click',function (){showTable(),createTable(SALES)})    
     
     const PURCHASES_BACK = document.querySelector("#purchases__back");
     PURCHASES_BACK.addEventListener('click',function (){backForm()})    
    
     const PURCHASES_CALCULATE = document.querySelector("#purchases__calculate");
-    PURCHASES_CALCULATE.addEventListener('click',function (){showTable();addInterest();createTable()})    
-    
+    PURCHASES_CALCULATE.addEventListener('click',function (){showTable();createTable(addInterest())})    
 }
 function backForm(){
     const PURCHASES = document.querySelector('.purchases')
@@ -84,13 +84,6 @@ function getData(){
     })
     return values;
 }
-function calculateInterest(){
-    const SALES_WHITH_INTEREST = SALES.map(function(object){
-        let price = parseFloat(object.price)
-        object.price = price + price* parseFloat(object.interest);
-    })
-    return SALES_WHITH_INTEREST;
-}
 function showTable(){
     clearData()
     appearElement(".purchases")
@@ -100,8 +93,8 @@ function showTable(){
     const PURCHASES_TABLE = document.querySelector('.purchases__table')
     PURCHASES_TABLE.innerHTML = ''
 }
-function createTable(){
-    SALES.map(addBuy);
+function createTable(a){
+    a.map(addBuy);
 }
 function disappearElement(a){
     const ELEMENT = document.querySelector(a)
@@ -114,7 +107,13 @@ function appearElement(a){
 }
 function addInterest(){
     disappearElement("#purchases__calculate")
-    SALES.map(calculateInterest);
+    let AUX = SALES.map(function(object){
+        let price = parseFloat(object.price)
+        let object_aux =  Object.assign([], object)
+        object_aux.price = price + price* parseFloat(object_aux.interest);
+        return object_aux
+    })
+    return AUX
 }
 
 function createElement(name,maturity,price){
