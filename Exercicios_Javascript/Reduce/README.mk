@@ -8,3 +8,8 @@ Regras:
 *Adicione um botão para calcular os juros de todas as duplicatas vencidas para facilitar a vida de Joana.
 *Joana aplica 2% de mora para duplicatas vencidas + 0,1% ao dia. Os juros são aplicados de forma simples, logo se são 30 dias em atraso, o total de juros é calculado da seguinte forma: 30 * 0,1 = 3%. 
 *O uso do método map() é obrigatório.
+
+Joana tem uma nova demanda, agrupar os títulos por cliente e data de vencimento. 
+Para isso crie dois botões, um deles para agrupar e apresentar os títulos por cliente e outro para agrupar e apresentar os títulos por data de vencimento. 
+Utilize o método reduce para executar o exercício.
+O uso do método reduce() é obrigatório. 
