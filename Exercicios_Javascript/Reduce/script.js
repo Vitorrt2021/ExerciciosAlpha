@@ -19,6 +19,55 @@ function calculateInterestValue(date){
 }
 
 
+function calculateForPeople(array,property){
+    return array.reduce(function (acc, obj) {
+        let key = obj[property];
+        if (!acc[key]) {
+          acc[key] = [];
+        }
+        acc[key].push(obj);
+        return acc;
+      }, []);
+}
+function showForPeople(){
+    let array = calculateForPeople(SALES,"name")
+    for (let name in array) {
+        for(let sale in array[name]){
+            addBuy(array[name][sale])
+        }
+    }
+}
+function organizeForName(array){
+    let aux = [];
+    for (let name in array) {
+        for(let sale in array[name]){
+            aux.push(array[name][sale])
+        }
+    }
+    console.log(aux)
+    aux.sort(function(object1,object2){
+        let name1 = object1.name
+        let name2 = object2.name
+        if(name1 > name2){
+            return 1;
+        }if(name1 < name2){
+            return -1
+        }
+        return 0;
+    })
+    console.log(aux)
+   return aux
+}
+function organizeForDate(){
+    let aux = SALES.map(function(obj){return obj})
+    aux.sort(function(object1,object2){
+        let date1 = new Date(object1.date)
+        let date2 = new Date(object2.date)
+        return date1 - date2;
+    })
+   
+    return aux;
+}
 function Sale(name, date,price) {
     this.name = name;
     this.date = date;
@@ -49,13 +98,21 @@ function initializeButtons(){
     
     const FORM_TABLE = document.querySelector("#form_table");
     FORM_TABLE.addEventListener('click',stopDefAction)
-    FORM_TABLE.addEventListener('click',function (){showTable(),createTable(SALES);})    
+    FORM_TABLE.addEventListener('click',function (){showTable(),createTable(SALES);
+        console.log(calculateForPeople(SALES,"name"));})    
     
     const PURCHASES_BACK = document.querySelector("#purchases__back");
     PURCHASES_BACK.addEventListener('click',function (){backForm()})    
    
     const PURCHASES_CALCULATE = document.querySelector("#purchases__calculate");
     PURCHASES_CALCULATE.addEventListener('click',function (){showTable();createTable(addInterest())})    
+
+    const PURCHASES_ORGANIZENAME = document.querySelector("#purchases__organizeName");
+    PURCHASES_ORGANIZENAME.addEventListener('click',function (){showTable();createTable(organizeForName(calculateForPeople(SALES,"name")));})    
+
+    const PURCHASES_ORGANIZEDATE = document.querySelector("#purchases__organizeDate");
+    PURCHASES_ORGANIZEDATE.addEventListener('click',function (){showTable();createTable(organizeForDate())})    
+
 }
 function backForm(){
     const PURCHASES = document.querySelector('.purchases')
