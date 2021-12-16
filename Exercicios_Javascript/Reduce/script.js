@@ -29,13 +29,56 @@ function calculateForPeople(array,property){
         return acc;
       }, []);
 }
+function calculateTotal(name,value){
+    const elementName = document.createElement('ul');
+    elementName.setAttribute('class','buy__name')
+    elementName.innerHTML = name
+    
+    const  elementMaturity = document.createElement('ul')
+    elementMaturity.setAttribute('class','bud__maturity')
+    elementMaturity.innerHTML = "  "
+    
+    const elementPrice = document.createElement('ul');
+    elementPrice.setAttribute('class','buy__price')
+    elementPrice.innerHTML = value
+    
+    const PURCHASES_TABLE = document.querySelector(".purchases__table")
+    PURCHASES_TABLE.append(createElement(elementName,elementMaturity,elementPrice));
+}
 function showForPeople(){
     let array = calculateForPeople(SALES,"name")
     for (let name in array) {
         for(let sale in array[name]){
             addBuy(array[name][sale])
+            
         }
+        let sum = array[name].reduce(function(acumulador,element){return acumulador+ parseFloat(element.price)},0) 
+        
+        console.log(sum)
+        console.log(array[name])
+        addSum(sum,name)
     }
+}
+function addSum(sum,name){
+    console.log("dentro add sum")
+    const elementName = document.createElement('ul');
+    elementName.setAttribute('class','total__name')
+    elementName.innerHTML = name
+    
+    const elementPrice = document.createElement('ul');
+    elementPrice.setAttribute('class','total__price')
+    elementPrice.innerHTML = sum
+    
+    const PURCHASES_TABLE = document.querySelector(".purchases__table")
+    PURCHASES_TABLE.append(createElementTotal(elementName,"   ",elementPrice));
+}
+function createElementTotal(name,maturity,price){
+    const  PURCHASE= document.createElement('li')
+    PURCHASE.setAttribute('class','purchase_total');
+    PURCHASE.append(name);
+    PURCHASE.append(maturity);
+    PURCHASE.append(price);
+    return PURCHASE;
 }
 function organizeForName(array){
     let aux = [];
@@ -44,18 +87,16 @@ function organizeForName(array){
             aux.push(array[name][sale])
         }
     }
-    console.log(aux)
     aux.sort(function(object1,object2){
         let name1 = object1.name
         let name2 = object2.name
-        if(name1 > name2){
-            return 1;
-        }if(name1 < name2){
-            return -1
+        if(name1 < name2){
+            return -1;
+        }if(name1 > name2){
+            return 1
         }
         return 0;
     })
-    console.log(aux)
    return aux
 }
 function organizeForDate(){
@@ -108,8 +149,8 @@ function initializeButtons(){
     PURCHASES_CALCULATE.addEventListener('click',function (){showTable();createTable(addInterest())})    
 
     const PURCHASES_ORGANIZENAME = document.querySelector("#purchases__organizeName");
-    PURCHASES_ORGANIZENAME.addEventListener('click',function (){showTable();createTable(organizeForName(calculateForPeople(SALES,"name")));})    
-
+    PURCHASES_ORGANIZENAME.addEventListener('click',function (){showTable();showForPeople();})    
+    //createTable(organizeForName(calculateForPeople(SALES,"name")))
     const PURCHASES_ORGANIZEDATE = document.querySelector("#purchases__organizeDate");
     PURCHASES_ORGANIZEDATE.addEventListener('click',function (){showTable();createTable(organizeForDate())})    
 

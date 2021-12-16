@@ -25,6 +25,10 @@ form{
 input,label{
     margin: 5px;
 }
+.purchase_total{
+    font-weight: 700;
+    background-color: bisque;
+}
 
 .purchases{
     
