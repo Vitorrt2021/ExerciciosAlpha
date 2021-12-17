@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduce</title>
+</head>
+<body>
+    <form>
+        <h1>Adicionar venda</h1>
+        <label for="form_name">Nome:</label>
+        <input type="text" id="form_name">
+        
+        <label for="form_date">Data de vencimento</label>
+        <input type="date" id="form_date">
+        
+        <label for="form_value">Valor</label>        
+        <input type="number" id="form_value">
+        
+        <input type="submit" value='Adicionar' id='form_submit'>
+        <input type="submit" value='Tabela' id="form_table">
+    
+    </form>
+    <article class='purchases'>
+        <div class="container_buttons">
+            <button id='purchases__back'>Voltar</button>
+            <button id='purchases__organizeName'>Organizar por nome</button>
+            <button id='purchases__organizeDate'>Organizar por data</button>
+            <button id='purchases__calculate'>Calcular juros</button>
+            <button id='purchases__filter'>Filtrar</button>
+        </div>
+        <form class='filter'>
+            <label for="filter_dateBegin">Data de Mínima</label>
+                <input type="date" id='filter_dateBegin'>
+            <label for="filter_dateEnd">Data de Máxima</label>
+                <input type="date" id='filter_dateEnd'>
+            <label for="filter_minValue">Valor minimo</label>
+                <input type="number" id='filter_minValue'>
+            <label for="filter_maxValue">Valor maximo</label>
+                <input type="number" id='filter_maxValue'>
+            <input type="submit" id='filter_submit' value='Filtrar'>
+        </form>
+
+        <section class="purchases__table">
+            
+        </section>
+    </article>
+
+
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>
