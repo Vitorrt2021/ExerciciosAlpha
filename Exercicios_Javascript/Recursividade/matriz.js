@@ -1,16 +1,17 @@
-function ele(matriz){
-    //console.log("OO")
-    if(Array.isArray(matriz) && matriz.length > 0){
-        ele(matriz.shift())
-        ele(matriz)
-    }else if(!(Array.isArray(matriz))){
-        console.log(matriz)
-    }else if(Array.isArray(matriz[0])){
+//Primeira Forma
+
+function printMatriz1(matriz){
+    if(Array.isArray(matriz[0])){
         let array = matriz.shift()
-        ele(array)
-        ele(matriz)
+        printMatriz1(array)
+        printMatriz1(matriz)
+    }else if(Array.isArray(matriz) && matriz.length > 0){
+        console.log(matriz.shift())
+        printMatriz1(matriz)
     }
 }
+
+//Segunda Forma
 function printMatrizElements(arr) {
     if(Array.isArray(arr[0])){
         let a = arr.shift()
@@ -23,12 +24,3 @@ function printMatrizElements(arr) {
     }
     return '';
 };
-  
-const o = [
-    [1,2,3,4],
-    [5,6,7,8],
-    [9,10,11,12],
-    [13,14,15,16]
-]
-//printMatrizElements(o)
-ele(o)
