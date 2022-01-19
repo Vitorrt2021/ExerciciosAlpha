@@ -1,0 +1,76 @@
+body{
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: aquamarine;
+}
+h1{
+    text-align: center;
+}
+form{
+    
+    padding: 10px;
+    border: solid 2px black;
+    background-color: white;
+    width: 700px; 
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+input,label{
+    margin: 5px;
+}
+.purchase_total{
+    font-weight: 700;
+    background-color: bisque;
+}
+.filter{
+    display: none;
+}
+.purchases{
+    
+    padding: 10px;
+    display: none;
+    width: 700px;
+    min-height: 400px;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: solid 2px black;
+    background-color: white;
+}
+.purchases button{
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container_buttons{
+    width: 100%;
+    justify-content: space-around;
+    display: flex;
+    margin: 20px;
+}
+.purchases__table{
+    display: flex;
+    flex-direction: column;
+}
+.filter{
+    border: none;
+}
+li{
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px rgb(0, 0, 0);
+}
+ul{
+    width: 150px;
+}
