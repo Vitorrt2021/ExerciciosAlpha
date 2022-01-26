@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form class="form_get">
+        <h1>Get</h1>
+        <div class='input_container'>
+            <label for="form_get_input_id">ID</label>
+            <input id='form_get_input_id' type="number">
+        </div>
+        <button id='form_get_button'>Consultar</button>
+    </form>
+    
+    <form class="form_post">
+        <h1>Post</h1>
+        <div class='input_container'>
+            <label for="form_post_input_name">Nome</label>
+            <input id='form_post_input_name' type="text">
+        </div>
+        <button id='form_post_button'>Enviar</button>
+    </form>
+    
+    <form class="form_put">
+        <h1>Put</h1>
+        
+        <div class='input_container'>
+            <label for="form_put_input_id">ID</label>
+            <input id='form_put_input_id' type="number">
+        </div>
+        
+        <div class='input_container'>
+            <label for="form_put_input_name">Nome</label>
+            <input id='form_put_input_name' type="text">
+        </div>
+        <button id='form_put_button'>Enviar</button>
+    </form>
+
+    <section class='data'>
+        <table id='result_table'></table>
+    </section>
+
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>
