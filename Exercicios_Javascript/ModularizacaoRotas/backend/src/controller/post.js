@@ -1,4 +1,4 @@
-const dataRequisition = require('../model/dataRquisition') 
+const dataRequisition = require('../model/dataRequisition') 
 const post = {
     createEmployees(req,res){            
         const employee = req.body

@@ -1,4 +1,4 @@
-const dataRequisition = require('../model/dataRquisition') 
+const dataRequisition = require('../model/dataRequisition') 
 
 const deleteEmployee = {
     deleteEmployee(req,res){
