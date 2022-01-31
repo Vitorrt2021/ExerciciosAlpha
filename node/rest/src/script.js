@@ -1,5 +1,5 @@
 
-const url = 'http://localhost:3000/api/v1/products/'
+const url = 'http://localhost:3000/produtos/'
 
 
 
@@ -31,7 +31,7 @@ function addEvent(element,callback){
     stopRefresh(element);
     document.querySelector(element).addEventListener('click',callback);
 }
-function sendGet(id=''){
+function sendGet(id='all'){
     const requestOptions ={
         method : "GET"
     }

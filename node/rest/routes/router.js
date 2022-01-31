@@ -3,8 +3,8 @@ const router = express.Router();
 
 let products =  require('../data/products.json')
 
-router.get('/',(req,res)=>{
-    res.send(products)
+router.get('/all',(req,res)=>{
+    res.json(products)
 })
 router.get('/:id',(req,res)=>{
     const result = products.filter((product)=>{
@@ -27,7 +27,7 @@ router.post('/',(req,res)=>{
         "id":id
     }    
     products.push(product);
-    res.send(product)
+    res.send(true)
 })
 
 router.put('/:id',(req,res)=>{
@@ -39,8 +39,8 @@ router.put('/:id',(req,res)=>{
         };
     });
     
-    if(result.length === 0) res.status(204).send('No product with this ip');
-    else res.send(result);
+    if(result.length === 0) res.send(false);
+    else res.send(true);
 })
 router.delete('/:id',(req,res)=>{
     const result = [];
@@ -52,7 +52,7 @@ router.delete('/:id',(req,res)=>{
         return true;
     });
     
-    if(result.length === 0) res.status(204).send('No product with this ip');
-    else res.send(result);
+    if(result.length === 0) res.send(false);
+    else res.send(true);
 })
 module.exports = router;

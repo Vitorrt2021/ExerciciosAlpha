@@ -1,0 +1,77 @@
+@font-face {
+    font-family: technology;
+    src: url(./assets/font/Technology-Bold-Italic.ttf.woff);
+}
+html{
+    font-size: 50px;
+    font-family: technology;
+}
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+p{
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: solid 2px #333;
+    border-radius: 10px;
+    width: 362px;
+    font-size: 2rem;
+    height: 100px;
+    background-color: #6b9e51;
+    text-align: end;
+    margin: 50px;
+}
+input{
+    border: solid 2px #333;
+    border-radius: 10px;
+    margin-top: 10px;
+    width: 362px;
+    height: 52px;
+    background-color: #6b9e51;
+    font-size: 1rem;
+    font-family: technology;
+    text-align: end;
+}
+button{
+    border: none;
+    font-size: 1rem;
+    font-family: technology;
+    font-weight:bolder ;
+    width: auto;
+    height: auto;
+    background-color: #c4c4c4;
+    border: 2px solid #c4c4c4 ;
+}
+button:hover{
+    background-color: #494949;
+}
+.buttons_setvalue{
+    width: 100%;
+    display: flex;
+    justify-content: space-between
+    
+}
+.container__buttons{
+   margin-top: 30px;
+   width: 362px;
+   display: grid;
+   grid-template-columns: auto auto auto auto;
+}
+.clear{
+    grid-column: 4 / 5;
+    grid-row: 3 / 5;
+    font-size: 25px;
+}
+.calculator{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 476px;
+    height: 664px;
+    background-color: #43414A;
+    border-radius: 30px;
+}
