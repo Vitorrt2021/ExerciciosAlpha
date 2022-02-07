@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet">
+    <link rel="icon" 
+      type="image/jpg" 
+      href="./assets/icons/icone.png" />
+    <title>Cotação</title>
+</head>
+<body>
+    <h1>Cotação</h1>
+
+    <form>
+        <div class="input_container">
+            <label for="select_coin">Moeda:</label>
+            <select name="coins" id="select_coin">
+            </select>    
+        </div>
+
+        <div class="input_dates">
+            <div class="input_container"> 
+                <label for="initial_date">Início</label>
+                <input type="date" id="initial_date">
+            </div>
+            <div class="input_container">
+                <label for="final_date">Final</label>
+                <input type="date" id="final_date">
+            </div>
+        </div>
+        <button id="send_requisition">Mandar</button>
+    
+    </form>
+    
+    <section class="informations">
+        <h1 id='coin_show'></h1>
+        <table id="result_table"></table>    
+    </section>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./script.js"> </script>
+</body>
+</html>
