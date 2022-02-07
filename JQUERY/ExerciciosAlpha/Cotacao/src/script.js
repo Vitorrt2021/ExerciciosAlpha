@@ -51,7 +51,7 @@ function createTable(array){
     else dada = array;
     
     if(dada.length === 0){
-        $('#coin_show').html('Não a informações sobre essa moeda')
+        $('#coin_show').html('There is no information for this currency')
         return false
     }
     dada.forEach((e)=>{       
