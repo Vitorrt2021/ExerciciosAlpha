@@ -18,22 +18,45 @@ $(document).ready(function(){
         const coin = $("#select_coin option:selected").val()
         const initial = $('#initial_date').val().replaceAll('-','');
         const final = $('#final_date').val().replaceAll('-','');
-        console.log(coin)
-        console.log(initial)
-        console.log(final)
+
+        if(dateIsWrong()) return false;
+
         $.ajax({url: urlApi+`/${coin}?start_date=${initial}&end_date=${final}`, 
         success: function(result){
             $('#coin_show').html(coin)        
             createTable(result);
         }});
-        // $.ajax({url: urlApi+`json/daily/${coin}?start_date=${initial}&end_date=${final}`, 
-        // success: function(result){
-        //     createTable(result);
-        // }});
         
     })
 })
 
+function dateIsWrong(){
+    const initial = $('#initial_date').val();
+    const initialDate = new Date(initial)
+    if(initial === ''){
+        alert('required both date fields filled in')
+        return true
+    }
+    if(initialDate > new Date()){
+        alert("The start date must be a day in the past")
+        return true
+    }
+    const final = $('#final_date').val()
+    const finalDate = new Date(final)
+    if(final === ''){
+        alert('required both date fields filled in')
+        return true
+    }
+    if(finalDate > new Date()){
+        alert('The end date must be in the past, we have no information about the future')
+        return true
+    }
+    if(finalDate < initialDate){
+        alert('The end date must be greater than the start date')
+        return true
+    }
+
+}
 function createSelect(coins){
     const coinsArray = Object.keys(coins)
     coinsArray.forEach((c)=>{
