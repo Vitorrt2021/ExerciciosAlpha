@@ -7,10 +7,10 @@ $(document).ready(function(){
 
     $('#select_coin').on('change',function(){
         const coin = $("#select_coin option:selected").val()
-        $.ajax({url: urlApi+`/${coin}`, 
+        $.ajax({url: urlApi+`json/last/${coin}`, 
         success: function(result){
             $('#coin_show').html(coin)
-            createTable(result);
+            createTableUnitary(result);
         }});
     })
     $('#send_requisition').on('click',function(e){
@@ -21,10 +21,11 @@ $(document).ready(function(){
 
         if(dateIsWrong()) return false;
 
-        $.ajax({url: urlApi+`/${coin}?start_date=${initial}&end_date=${final}`, 
+        $.ajax({url: urlApi+`${coin}?start_date=${initial}&end_date=${final}`, 
         success: function(result){
             $('#coin_show').html(coin)        
             createTable(result);
+            betweenDays(coin)
         }});
         
     })
@@ -65,33 +66,80 @@ function createSelect(coins){
     })
 }
 
-
 function createTable(array){
-    $('#result_table').html('')
+    console.log('-----------------')
+    console.log(array)
+    console.log(array['0'])
+    $('#result_table')
+                    .html('')
+                    .attr('class','tableDays')
+    const head = $('<tr></tr>');      
+
+    const keys = Object.keys(array['0'])
+
+    keys.forEach((key)=>{
+        let atr = $("<td></td>").text(key.toUpperCase()).attr('class','table_header'); 
+        head.append(atr)    
+    })
+    $('#result_table').append(head)
+  
+}
+function betweenDays(coin){
+    const initial = new Date($('#initial_date').val());
+    const final = new Date($('#final_date').val());
+    
+    function addDays(date, days) {
+        var result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    }
+    let initialAux = initial;
+    
+    while(initialAux <= final){
+        initialAux = addDays(initialAux,1)
+        const initialStr = initialAux.toISOString().split('T')[0].replaceAll('-','');       
+        $.ajax({url: urlApi+`${coin}?start_date=${initialStr}&end_date=${initialStr}`, 
+        success: function(result){
+            addOnTable(result);
+        }});
+    }
+
+}
+
+function addOnTable(array){
+    let dada = array[0] 
+    const keys = Object.keys(dada)
+    const linha = $('<tr></tr>');
+    
+    keys.forEach((key)=>{
+        let atr = $("<td></td>").text(dada[key]).attr('class',key); 
+        linha.append(atr)    
+    }) 
+    
+    $('#result_table').append(linha)   
+}
+
+function createTableUnitary(array){
+    $('#result_table').html('').attr('class','tableDay')
 
     let dada;
     if(!Array.isArray(array)) dada =Object.entries(array)
-    else dada = array;
+    else dada = array[1];
     
-    if(dada.length === 0){
-        $('#coin_show').html('There is no information for this currency')
-        return false
-    }
-    dada.forEach((e)=>{       
-        const linha = $('<tr></tr>');
-        const head = $('<tr></tr>');      
-        const keys = Object.keys(e)
-
-        keys.forEach((key)=>{
-            let atr = $("<td></td>").text(key.toUpperCase()).attr('class','table_header'); 
-            head.append(atr)    
-        })
-
-        keys.forEach((key)=>{
-            let atr = $("<td></td>").text(e[key]).attr('class',key); 
-            linha.append(atr)    
-        })
-        
-        $('#result_table').append(head,linha)    
+    dada = dada[0][1]
+    const keys = Object.keys(dada)
+    const linha = $('<tr></tr>');
+    const head = $('<tr></tr>');
+    
+    keys.forEach((key)=>{
+        console.log(keys)
+        let atr = $("<td></td>").text(key.toUpperCase()).attr('class','table_header'); 
+        head.append(atr)    
     })
+    keys.forEach((key)=>{
+        let atr = $("<td></td>").text(dada[key]).attr('class',key); 
+        linha.append(atr)    
+    }) 
+    
+    $('#result_table').append(head,linha)    
 }
