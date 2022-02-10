@@ -1,3 +1,5 @@
+
+let dayBetwen = [];
 const urlApi = 'https://economia.awesomeapi.com.br/'
 $(document).ready(function(){
     $.ajax({url: urlApi+"/json/all", 
@@ -23,6 +25,7 @@ $(document).ready(function(){
 
         $.ajax({url: urlApi+`${coin}?start_date=${initial}&end_date=${final}`, 
         success: function(result){
+            dayBetwen = []
             $('#coin_show').html(coin)        
             createTable(result);
             betweenDays(coin)
@@ -84,6 +87,32 @@ function createTable(array){
     $('#result_table').append(head)
   
 }
+
+function addInArray(el){
+    console.log(dayBetwen)
+    dayBetwen.push(el)
+    dayBetwen.sort(function(a,b){
+        console.log('-----------A')
+        console.log(a)
+        console.log(a[0])
+        let dateA = new Date(a.create_date)
+        let dateB = new Date(b.create_date)
+        if (dateA > dateB) {
+            return 1;
+        }
+        if (dateA < dateB) {
+           return -1;
+        }
+          return 0;   
+    })
+      
+    dayBetwen.forEach(e=>{
+        console.log('-------------ForEach')
+        console.log(e)
+        addOnTable(e)
+    })
+}
+
 function betweenDays(coin){
     const initial = new Date($('#initial_date').val());
     const final = new Date($('#final_date').val());
@@ -100,12 +129,11 @@ function betweenDays(coin){
         const initialStr = initialAux.toISOString().split('T')[0].replaceAll('-','');       
         $.ajax({url: urlApi+`${coin}?start_date=${initialStr}&end_date=${initialStr}`, 
         success: function(result){
-            addOnTable(result);
+            createTable(result);
+            addInArray(result);
         }});
     }
-
 }
-
 function addOnTable(array){
     let dada = array[0] 
     const keys = Object.keys(dada)

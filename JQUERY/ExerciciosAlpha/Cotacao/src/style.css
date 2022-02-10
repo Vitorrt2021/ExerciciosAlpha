@@ -37,6 +37,9 @@ button{
     border-radius: 5px;
     cursor: pointer;
 }
+table{
+    border-collapse: collapse;
+}
 button:hover{
     background-color: #2f99d1;
 }
@@ -44,6 +47,9 @@ input[type='date']{
     font-size: 20px;
     width: 310px;
     border-radius: 5px;
+}
+td{
+    text-align: center;
 }
 h4{
     margin: 5px;

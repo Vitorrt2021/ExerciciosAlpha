@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet">
+    <title>GamesMagazine</title>
+</head>
+<body>
+    <header>
+        <div class="post_container">
+            <button id="form_toggle">Adicionar funcionário</button>
+            <form class='form_post'>
+                <div class='form_container'>
+                    <label for="form_post_game"> Nome</label>
+                    <input id='form_post_game' type="text">    
+                </div>
+                
+                <div class='form_container'>
+                    <label for="form_post_multiplayer"> Multiplayer</label>
+                    <input id='form_post_multiplayer' type="checkbox">    
+                </div>
+                
+                <div class='form_container'>
+                    <label for="form_post_offline">Offline</label>
+                    <input id='form_post_offline' type="checkbox">    
+                </div>
+                
+                <div class='form_container'>
+                    <label for="form_post_crossplataform">CrossPlataform</label>
+                    <input id='form_post_crossplataform' type="checkbox">    
+                </div>
+                
+                <div class='form_container'>
+                    <label for="form_post_year">Ano de Lançamento</label>
+                    <input id='form_post_year' type="date">    
+                </div>
+
+                <div class='form_container'>
+                    <label for="form_post_genre">Gênero</label>
+                    <select name="genre" id="form_post_genre">
+                    </select>  
+                </div>
+                
+                <div class="form_buttons">
+                    <input id='form_button_submit' type="submit" value='Confimar'>
+                    <input id='form_button_reset' type="reset" value='Cancelar'>
+                </div>
+            </form>
+        </div>
+    </header>
+    <section class="table_container">
+        <table id='table_result'>    
+        </table>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./script.js"> </script>
+</body>
+</html>
