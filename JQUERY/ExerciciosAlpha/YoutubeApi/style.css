@@ -1,0 +1,16 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#tabs {
+  width: 60vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.accordion {
+  width: 60vw;
+}

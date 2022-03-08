@@ -1,6 +1,5 @@
 const urlCEP = `https://cep.awesomeapi.com.br/json/`
 const cep = "33937240" 
-const API_KEY = `AIzaSyCu3ffdpqPl_iYVSjyI3w1cHnYmA74nYtU`
 $(document).ready(function(){
     requestCep(cep,createTable)    
     $('#input_submit').on('click',function(e){
@@ -41,42 +40,21 @@ function cheackCep(cep){
     }
     return true;
 }
-// function defMap(res){
-    // const lat = parseFloat(res.lat)
-    // const lng = parseFloat(res.lng)
-    // console.log(`https://www.google.com/maps/embed/v1/?key=${API_KEY}&center=${lat},${lng}&zoom=18&maptype=satellite`)
-    // $('#map').attr('src',`
-    // https://www.google.com/maps/embed/v1/place
-    // ?key=${API_KEY}
-    // &center=${lat},${lng}
-    // &zoom=18
-    // &maptype=satellite`)
-// }
 function addLatLng(res){
     const lat = parseFloat(res.lat)
     const lng = parseFloat(res.lng)
-    const options = {
-        zoom:13,
-        center:{lat: lat, lng: lng}
-    }
-    const map = new google.maps.Map(document.getElementById('map'),options)
-}
-function initMap(){
-    const options = {
-        zoom:1,
-        center:{lat: 48.858093, lng: 2.294694}
-    }
-    const map = new google.maps.Map(document.getElementById('map'),options)
+    const url = `http://maps.google.com/maps?q=${lat},${lng}&z=16&output=embed`
+    $('#map').attr('src',url);
 }
 
 function requestCep(cep,callback){
     $.ajax({
-        url: urlCEP + cep
+        url: urlCEP + cep,
     })
     .done(function(res){
         callback(res)
     })
-    .fail(function(){
+    .fail(function(jqXHR,exception){
         alert('Falhou')
     })
 }
