@@ -15,10 +15,10 @@ router.get("/:delay", (req, res) => {
 
   response(delay)
     .then(() => {
-      res.send({ result: "REQUISIÇÂO ATENDIDA" });
+      res.send({ result: "REQUISIÇÃO ATENDIDA" });
     })
     .catch(() => {
-      res.send({ result: "REQUISIÇÂO NÂO ATENDIDA POR TIMEOUT" });
+      res.send({ result: "REQUISIÇÃO NÃO ATENDIDA POR TIMEOUT" });
     });
 });
 

@@ -1,0 +1,101 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: gainsboro;
+}
+main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#img_logo{
+    width: 200px;
+}
+#login_form{
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+#login_form h4{
+    font-size: 2em;
+}
+.input_container{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4em;
+}
+.input_container input{
+    width: 250px;
+    height: 40px;
+    font-size: 0.8em;
+}
+input[type=submit]{
+    width: 100px;
+    height: 30px;
+    margin-top: 30px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+input[type=submit]:hover{
+    background-color: white;
+    color: black;
+}
+
+/* 
+<div class='event_container'>
+                <h4>${element.title}</h4>
+                <p>${element.description}<p>
+                <p><strong>${element.date}</strong></p>
+                <p><strong>${element.time}</strong></p>
+                <button id='${element.title}'>Adicionar</button>
+                <p id='${element.title}_qrcode'></p>
+            <div> */
+#events{
+  display: flex;
+  flex-wrap: wrap; 
+  width: 80vw;
+  height: 70vh; 
+    display: none;
+}
+button{
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+}
+button:hover{
+   color: black;
+   background-color: white; 
+}
+.event_container{
+    width: 150px;
+    height: 200px;
+    margin: 10px;
+    border: solid 1px black;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+h2{
+    display: block;
+    width: 100vw;
+}

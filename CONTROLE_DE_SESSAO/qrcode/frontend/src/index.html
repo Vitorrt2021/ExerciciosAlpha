@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./qrcode.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <link rel="icon" type="image/x-icon" href="./assets/chapeu.png">
+
+    <title>Mugiwara</title>
+</head>
+<body>
+
+    <main>
+        <img id="img_logo" src="./assets/chapeu.png" alt="Chapeu"><h1>Mugiwara Events</h1>
+        <form id="login_form">
+            <h4>Login</h4>
+            <div class="input_container">
+                <label for="form_user">Username</label>
+                <input placeholder="Username"  id='form_username' type="text">
+            </div>
+            <div class="input_container">
+                <label for="form_password">Password</label>
+                <input placeholder="Password" id='form_password' type="password">
+            </div>
+            <input id='form_submit' type="submit" value="Login">
+        </form>
+  
+        <section id="events">
+            <h2>Eventos</h2>
+        </section>
+    </main>
+
+    <div id="placeHolder"></div>
+
+</body>
+<script>
+const url = 'http://localhost:3004'
+document.querySelector('#form_submit').addEventListener('click',(e)=>{
+    e.preventDefault()
+    const username = document.querySelector('#form_username')
+    const password = document.querySelector('#form_password')
+    sendPost({
+        username: username.value,
+        password: password.value
+    })
+})
+
+function sendPost(data){
+    const requestOptions={
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:3334',
+            'Access-Control-Allow-Credentials': true
+        },
+        credentials: 'include',
+        body: JSON.stringify(data)
+    }
+    request(url+'/user/login',requestOptions,renderEvents);
+}
+async function renderEvents(){
+    document.getElementById('login_form').style.display = 'none'
+    document.getElementById('form_submit').remove()
+  
+    document.getElementById('events').style.display = 'flex'
+    const response = await fetch(url+'/events')
+    const data = await response.json()
+    const events = data.events
+
+    events.forEach((element,index) => {
+        const eventSection = document.querySelector('#events')
+        eventSection.innerHTML += `
+            <div class='event_container'>
+                <h4>${element.title}</h4>
+                <p>${element.description}<p>
+                <p><strong>${element.date}</strong></p>
+                <p><strong>${element.time}</strong></p>
+                <button id='button_${index}'>Adicionar</button>
+                <p id='qrcode_${index}'></p>
+            <div>
+        `
+    });
+    events.forEach((element,index) =>{
+        document.querySelector(`#button_${index}`).addEventListener('click',()=>{
+            let typeNumber = 4;
+            let errorCorrectionLevel = 'L';
+            let qr = qrcode(typeNumber, errorCorrectionLevel);
+            const cookies = document.cookie
+            const username = document.querySelector('#form_username').value
+            qr.addData(url+'/events/entry?name='+username+"&ticket="+element.title);
+            qr.make();
+            document.getElementById(`button_${index}`).remove()
+            document.getElementById(`qrcode_${index}`).innerHTML = qr.createImgTag();  
+        })
+
+    })
+}
+function request(url,requestOptions,callback){
+    fetch(url,requestOptions)
+        .then(function(response){
+            if(!response.ok) {
+                alert('Invalido')
+                return false
+            }
+            return response.json()
+        })
+        .then(function(data){
+            if(!data){
+                alert('Não a informações valida')
+            }else if(callback){
+                callback(data)
+            }
+        })
+        .catch(function(error){
+            alert(error.message)
+        })
+}
+
+</script>
+</html>
