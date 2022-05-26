@@ -38,7 +38,7 @@ function Nav() {
         <Modal>
           <h3>Tem certeza que quer sair?</h3>
           <button onClick={() => setModal(false)}>Não</button>
-          <button onClick={() => setModal(false)}>Sim</button>
+          <button onClick={() => window.close()}>Sim</button>
         </Modal>
       )}
       <NavLayout>

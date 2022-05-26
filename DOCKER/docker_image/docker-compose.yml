@@ -1,0 +1,10 @@
+services:
+  my-sample-app:
+    image: vitorrt2020/my-sample-app:latest
+    restart: always
+    ports:
+      - "80:80"
+    expose:
+      - 80
+    volumes:
+      - ./nginx-pages:/usr/share/nginx/html
