@@ -2,7 +2,7 @@ import { BadRequest } from '../error/errors';
 import AccountTable from '../repositories/db/account';
 import DepositRequest from '../model/deposit_request_model';
 export default class ValidateDeposit {
-  public async execute(params: DepositRequest): boolean {
+  public async execute(params: DepositRequest): Promise<boolean> {
     await this.validateAccount(params);
     this.validateValue(params)
     return true;

@@ -4,12 +4,17 @@ import AccountTable from '../repositories/db/account';
 import ValidateDeposit from '../validator/deposit_validate';
 import TransactionTable from '../repositories/db/transaction';
 import DepositRequest from '../model/deposit_request_model';
+import { BadRequest } from '../error/errors';
 export default class CreateDeposit {
   public async execute(params: DepositRequest) {
     await new ValidateDeposit().execute(params);
 
-    const accountId = await new AccountTable().find(params.account);
     
+    const accountId = await new AccountTable().find(params.account);
+    if(!accountId){
+      throw new BadRequest("Account don't exist")
+    }
+
     const {value} = params
     const tax = this.calculateTax(value);
     const totalValue = value - tax;
@@ -26,9 +31,9 @@ export default class CreateDeposit {
       id: uuidv4(),
       destiny_account: null,
       type: 'deposit',
-      value: value.toFixed(2),
-      total_value: totalValue.toFixed(2),
-      tax: tax.toFixed(2), 
+      value: parseFloat(value.toFixed(2)),
+      total_value: parseFloat(totalValue.toFixed(2)),
+      tax: parseFloat(tax.toFixed(2)), 
     };
   }
 

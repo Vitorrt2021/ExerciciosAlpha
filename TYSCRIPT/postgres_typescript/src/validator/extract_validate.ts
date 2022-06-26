@@ -4,9 +4,12 @@ import ExtractRequest from '../model/extract_request_mode';
 const bcrypt = require('bcrypt');
 
 export default class ValidateExtract {
-  public async execute(params: ExtractRequest): boolean {
+  public async execute(params: ExtractRequest): Promise<boolean> {
     await this.validateAccount(params);
     const accountId = await new AccountTable().find(params.account);
+    if(!accountId){
+      throw new BadRequest("Account don't exist")
+    }
     await this.validatePassword(accountId, params);
 
     return true;

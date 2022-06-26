@@ -4,11 +4,14 @@ import DraftRequest from '../model/draft_request_model';
 const bcrypt = require('bcrypt');
 
 export default class ValidateDraft {
-  public async execute(params: DraftRequest): boolean {
+  public async execute(params: DraftRequest): Promise<boolean> {
     this.validateValue(params);
     await this.validateAccount(params)
-
+    
     const accountId = await new AccountTable().find(params.account);
+    if(!accountId){
+      throw new BadRequest("Account don't exist")
+    }
     await this.validatePassword(accountId,params);
     await this.haveEnoughMoney(accountId, params);
 

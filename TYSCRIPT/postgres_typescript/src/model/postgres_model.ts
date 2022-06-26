@@ -1,6 +1,6 @@
 interface PostgresConfig{
     host: string | undefined,
-    port: unknown,
+    port: string | undefined,
     user: string | undefined ,
     password: string | undefined,
     database: string | undefined

@@ -5,7 +5,7 @@ interface ITransaction{
     type: string 
     value: number
     account: string
-    destiny_account: string 
+    destiny_account: string | null 
     tax: number 
     total_value: number
 }

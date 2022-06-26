@@ -4,6 +4,7 @@ import TransactionTable from '../repositories/db/transaction';
 import ValidateDraft from '../validator/draft_validate';
 import AccountTable from '../repositories/db/account';
 import DraftRequest from '../model/draft_request_model';
+import { BadRequest } from '../error/errors';
 export default class CreateDraft {
   private tax = 4;
 
@@ -12,7 +13,9 @@ export default class CreateDraft {
     await new ValidateDraft().execute(params);
     const {account, value} = params
     const accountId = await new AccountTable().find(account);
-
+    if(!accountId){
+      throw new BadRequest("Account don't exist")
+    }
     const totalValue = value + this.tax;
     const draft: ITransaction = this.buildDraft(accountId, totalValue, value);
 
@@ -29,9 +32,9 @@ export default class CreateDraft {
       id: uuidv4(),
       type: 'draft',
       destiny_account: null,
-      value: value.toFixed(2),
-      total_value: totalValue.toFixed(2),
-      tax: this.tax.toFixed(2),
+      value: parseFloat(value.toFixed(2)),
+      total_value: parseFloat(totalValue.toFixed(2)),
+      tax: parseFloat(this.tax.toFixed(2)),
     };
   }
 }

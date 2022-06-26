@@ -1,10 +1,10 @@
 import { BadRequest } from '../error/errors';
 import AccountTable from '../repositories/db/account';
-import TransferResquest from '../model/transfer_request_model';
+import TransferRequest from '../model/transfer_request_model';
 const bcrypt = require('bcrypt');
 
 export default class ValidateTransfer {
-  public async execute(params: TransferResquest): boolean {
+  public async execute(params: TransferRequest): Promise<boolean> {
     this.validateValue(params);
     this.validateOriginAccount(params);
     await this.validateDestinyAccount(params);
@@ -16,7 +16,7 @@ export default class ValidateTransfer {
     return true;
   }
 
-  private async getOriginId(params: TransferResquest): Promise<string> {
+  private async getOriginId(params: TransferRequest): Promise<string> {
     const originId = await new AccountTable().find(params.origin_account);
     if (!originId) {
       throw new BadRequest("Origin account don't exist");
@@ -24,7 +24,7 @@ export default class ValidateTransfer {
     return originId;
   }
 
-  private async validateDestinyAccount(params: TransferResquest): Promise<void> {
+  private async validateDestinyAccount(params: TransferRequest): Promise<void> {
     if (!('destiny_account' in params)) {
       throw new BadRequest('Need destiny account');
     }
@@ -34,13 +34,13 @@ export default class ValidateTransfer {
     }
   }
 
-  private validateOriginAccount(params): void {
+  private validateOriginAccount(params: TransferRequest): void {
     if (!('origin_account' in params)) {
       throw new BadRequest('Need origin account');
     }
   }
 
-  private validateValue(params):void {
+  private validateValue(params: TransferRequest):void {
     if (!('value' in params)) {
       throw new BadRequest('Need value');
     }
@@ -49,7 +49,7 @@ export default class ValidateTransfer {
     }
   }
 
-  private async validatePassword(accountId: string, params): Promise<void> {
+  private async validatePassword(accountId: string, params: TransferRequest): Promise<void> {
     if (!('password' in params.origin_account)) {
       throw new BadRequest('Origin account password is required');
     }
@@ -60,7 +60,7 @@ export default class ValidateTransfer {
     }
   }
 
-  private async haveEnoughMoney(accountId: string, value): Promise<void> {
+  private async haveEnoughMoney(accountId: string, value: number): Promise<void> {
     const money = await new AccountTable().getBalance(accountId);
     if (money < value) {
       throw new BadRequest('Insufficient funds');

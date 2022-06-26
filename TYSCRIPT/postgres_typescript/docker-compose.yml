@@ -5,19 +5,27 @@ services:
     restart: always
     environment:
       -  PORT=8000
+      -  DB_HOST=db_bank
+      -  DB_PORT=5432
+      -  DB_USER=postgres
+      -  DB_PASSWORD=postgres
+      -  DB_NAME=postgres
     ports:
       - '8000:8000'
-    
-#   db:
-#     image: postgres:14.1-alpine
-#     restart: always
-#     environment:
-#       - POSTGRES_USER=postgres
-#       - POSTGRES_PASSWORD=postgres
-#     ports:
-#       - '8001:5432'
-#     volumes: 
-#       - db:/var/lib/postgresql/data
-# volumes:
-#   db:
-#     driver: local
+    depends_on:
+      - db_bank
+    links:
+      - db_bank 
+  db_bank:
+    build: ./docker/db/
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '8002:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local

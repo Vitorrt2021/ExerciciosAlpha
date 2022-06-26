@@ -1,9 +1,9 @@
 import IAccount from "./account_model"
 
-interface TransferResquest{
+interface TransferRequest{
     origin_account: IAccount
     destiny_account: IAccount
     value: number
 }
 
-export default TransferResquest
+export default TransferRequest
