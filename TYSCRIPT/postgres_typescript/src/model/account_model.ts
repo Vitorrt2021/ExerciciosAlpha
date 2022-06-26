@@ -1,10 +1,13 @@
 interface IAccount {
-    agency: number 
-    agency_check_digit: number 
+    agency_number: number
+    agency_verification_code: number 
     account_number: number 
-    check_digit: number 
+    account_verification_code : number 
     balance: number
+    password: string
     id: string
+    email: string
+    user_id: string
 }
 
 export default IAccount

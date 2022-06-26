@@ -1,8 +1,30 @@
-import ITransaction from "../model/transaction_model"
-import { BadRequest } from "../error/errors"
+import { BadRequest } from '../error/errors';
+import AccountTable from '../repositories/db/account';
+import DepositRequest from '../model/deposit_request_model';
+export default class ValidateDeposit {
+  public async execute(params: DepositRequest): boolean {
+    await this.validateAccount(params);
+    this.validateValue(params)
+    return true;
+  }
 
-export default class ValidateDeposit{
-    public isValid(deposit: ITransaction): boolean{
-        return true
+  private async validateAccount(params: DepositRequest) {
+    if (!('account' in params)) {
+      throw new BadRequest('Need account to make deposit');
     }
+    const { account } = params;
+    const accountId = await new AccountTable().find(account);
+    if (!accountId) {
+      throw new BadRequest("Account don't exist");
+    }
+  }
+  
+  private validateValue(params: DepositRequest):void {
+    if (!('value' in params)) {
+      throw new BadRequest('Need value');
+    }
+    if (params.value <= 0) {
+      throw new BadRequest('Value must be greater than zero');
+    }
+  }
 }

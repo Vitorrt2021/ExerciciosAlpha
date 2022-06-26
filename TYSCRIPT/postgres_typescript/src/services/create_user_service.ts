@@ -1,19 +1,26 @@
-import { Request } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import ValidateUser from '../validator/user_validate';
 import IUser from '../model/user_model';
+import UserTable from '../repositories/db/user';
 
-export default class CreateUser{
-    execute(req: any): IUser{
-        const user: IUser = {
-            name: req.name ,
-            email: req.email,
-            cpf: req.cpf,
-            date_of_birth: req.date_of_birth,
-            id: uuidv4()
-        }
-        new ValidateUser().isValid(user)
-        return user
-    }
-    
+export default class CreateUser {
+  async execute(params: any): Promise<string> {
+
+    new ValidateUser().execute(params);
+
+    const id = await new UserTable().findByCpf(params.cpf);
+    if (id) return id;
+    const user: IUser = this.build(params);
+    await new UserTable().insert(user);
+    return user.id;
+  }
+
+  build(params): IUser {
+    return {
+      name: params.name,
+      cpf: params.cpf,
+      birthdate: params.birthdate,
+      id: uuidv4(),
+    };
+  }
 }

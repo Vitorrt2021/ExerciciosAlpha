@@ -1,14 +1,40 @@
-import PostgresDB from './db/index';
+import PostgresDB from './index';
 import IUser from '../../model/user_model';
+import { InternalServerError } from '../../error/errors';
 
 class UserTable extends PostgresDB {
-  public insert(user: IUser): Promise<boolean> {
+  public async insert(user: IUser): Promise<boolean> {
+    try {
+      const client = await this.pool.connect();
+      const query = `
+              INSERT INTO users (id, name,birthdate,cpf)
+              VALUES ($1,$2,$3,$4)
+              RETURNING id;
+          `;
+      await client.query(query, [user.id, user.name, user.birthdate, user.cpf]);
+      return true;
+    } catch (e) {
+      console.log(e);
+      throw new InternalServerError('Service temporarily unavailable');
+    }
+  }
+  
+  public async findByCpf(cpf: string){
+    const client = await this.pool.connect();
     const query = `
-            INSERT INTO user (id, name, email, birstdate)
-            VALUES (1$,2$,3$,4%)
+            SELECT id
+            FROM users
+            WHERE cpf = $1
         `;
-    await this.pool.query(query, [user.id, user.name, user.email, user.date_of_birth]);
+
+    const result = await client.query(query, [cpf]);
+    if(result.rows.length !== 0){
+      return result.rows[0].id 
+    }
+    return null
+  } catch (e: Error) {
+    console.log(e);
+    throw new InternalServerError('Service temporarily unavailable');
   }
 }
-
 export default UserTable;

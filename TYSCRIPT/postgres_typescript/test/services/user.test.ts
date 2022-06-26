@@ -8,14 +8,14 @@ describe('CreateUser',()=>{
             name:'Vitor',
             email: "vitorrt2015@gmail.com",
             cpf:'31568262353',
-            date_of_birth:'28/05/2003',
+            birthdate:'28/05/2003',
         }       
         const user: IUser = new CreateUser().execute(newUser)
         test('name',()=>{
             expect(user.name).toBe('Vitor')
         })
         test('date of birth',()=>{
-            expect(user.date_of_birth).toBe('28/05/2003')
+            expect(user.birthdate).toBe('28/05/2003')
         })
         test('email',()=>{
             expect(user.email).toBe('vitorrt2015@gmail.com')

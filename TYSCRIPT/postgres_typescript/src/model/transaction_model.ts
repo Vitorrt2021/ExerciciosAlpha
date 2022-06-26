@@ -1,11 +1,13 @@
 import IAccount from './account_model'
 
 interface ITransaction{
-    transaction_id: string 
+    id: string 
     type: string 
     value: number
-    date: string 
-    account: IAccount
+    account: string
+    destiny_account: string 
+    tax: number 
+    total_value: number
 }
 
 export default ITransaction

@@ -1,11 +1,11 @@
 import {Request, Response } from 'express';
-import CreateDraft from '../services/create_draft_service';
+import GetExtract from '../services/get_extract_service';
 
-export default class DraftController{
+export default class ExtractController{
     public async handler(req: Request, res: Response){
-        const deposit = await new CreateDraft().execute(req.body)
+        const extract = await new GetExtract().execute(req.body)
         res.send({
-            data: deposit,
+            data: extract,
             message: "Success",
             status: 200
         })
