@@ -10,7 +10,7 @@ export default class CreateAccountController {
     res.send({
       data: payload,
       message: 'Success',
-      status: 200,
+      status: 201,
     });
   }
 }

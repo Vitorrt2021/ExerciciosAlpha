@@ -1,6 +1,7 @@
 import PostgresDB from './index';
 import { BadRequest, InternalServerError } from '../../error/errors';
 import IAccount from '../../model/account_model';
+import ExtractQuery from '../../model/extract_query_model';
 
 class AccountTable extends PostgresDB {
   public async insert(account: IAccount): Promise<boolean> {
@@ -110,19 +111,33 @@ class AccountTable extends PostgresDB {
       throw new InternalServerError('Service temporarily unavailable');
     }
   }
+  
+  public async getName(accountId: string): Promise<string> {
+    try {
+      const client = await this.pool.connect();
+      const query = `                       
+          SELECT users.name as name 
+          FROM accounts
+          LEFT JOIN users ON users.id = accounts.user_id
+          WHERE accounts.id = $1;
+       `;
+      const values = [accountId];
+      const result = await client.query(query, values);
 
-  public async extract(accountId: string): Promise<Array<Object>> {
+      return result.rows[0].name;
+    } catch (e) {
+      console.log(e);
+      throw new InternalServerError('Service temporarily unavailable');
+    }
+  }
+
+  public async extract(accountId: string): Promise<Array<ExtractQuery>> {
     try {
       const client = await this.pool.connect();
       const query = `          
-      SELECT type,value,tax,total_value, transactions.created_at,account, ( CASE  destiny_account
-                                                                              WHEN $1 THEN true
-                                                                              ELSE false
-                                                                              END 
-                                                                            ) as receive_transfer
+      SELECT type,total_value as value, transactions.created_at as date, destiny_account = $1 as receive_transfer, destiny_account, account as origin_account 
         FROM transactions
         LEFT JOIN accounts ON accounts.id = $1
-        LEFT JOIN users ON users.id = accounts.user_id  
         WHERE account = $1 or destiny_account = $1
         ORDER BY transactions.created_at;
       `;
