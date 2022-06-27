@@ -16,6 +16,11 @@ services:
       - db_bank
     links:
       - db_bank 
+    command: npm run watch
+    volumes:
+      - type: bind
+        source: ./src  
+        target: /usr/bank/src
   db_bank:
     build: ./docker/db/
     restart: always

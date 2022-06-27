@@ -16,7 +16,7 @@ export default class CreateDraft {
     if(!accountId){
       throw new BadRequest("Account don't exist")
     }
-    const totalValue = value + this.tax;
+    const totalValue = value - this.tax;
     const draft: ITransaction = this.buildDraft(accountId, totalValue, value);
 
     await new AccountTable().draft(accountId, totalValue);
