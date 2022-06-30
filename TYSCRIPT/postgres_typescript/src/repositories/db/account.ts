@@ -21,6 +21,39 @@ class AccountTable extends PostgresDB {
     }
   }
 
+  public async get(accountId: string): Promise<Array<any>> {
+    try {
+      const client = await this.pool.connect();
+      const query = `          
+            SELECT * FROM accounts
+            WHERE accounts.id = $1;
+          `;
+      const values = [accountId];
+      const result = await client.query(query, values);
+      return result.rows[0];
+    } catch (e) {
+      console.log(e);
+      throw new InternalServerError('Service temporarily unavailable');
+    }
+  }
+
+  public async isOwner(accountId: string): Promise<Array<any>> {
+    try {
+      const client = await this.pool.connect();
+      const query = `          
+            SELECT users.cpf FROM accounts
+            LEFT JOIN users ON users.id = accounts.user_id
+            WHERE accounts.id = $1;
+          `;
+      const values = [accountId];
+      const result = await client.query(query, values);
+      return result.rows;
+    } catch (e) {
+      console.log(e);
+      throw new InternalServerError('Service temporarily unavailable');
+    }
+  }
+
   public async getPassword(accountId: string):Promise<string | null>{
     try {
       const client = await this.pool.connect();
@@ -41,34 +74,36 @@ class AccountTable extends PostgresDB {
     }
   } 
 
-  public async deposit(accountId: string, value: number): Promise<boolean> {
+  public async deposit(accountId: string, value: number): Promise<any> {
     try {
       const client = await this.pool.connect();
       const query = `                       
             UPDATE accounts
             SET balance = balance + $2
-            WHERE id = $1;
+            WHERE id = $1
+            RETURNING *;
           `;
       const values = [accountId, value];
-      await client.query(query, values);
-      return true;
+      const result = await client.query(query, values);
+      return result.rows[0];
     } catch (e) {
       console.log(e);
       throw new InternalServerError('Service temporarily unavailable');
     }
   }
 
-  public async draft(accountId: string, value: number): Promise<boolean> {
+  public async draft(accountId: string, value: number): Promise<any> {
     try {
       const client = await this.pool.connect();
       const query = `                       
             UPDATE accounts
             SET balance = balance - $2
-            WHERE id = $1;
+            WHERE id = $1
+            RETURNING *;
           `;
       const values = [accountId, value];
-      await client.query(query, values);
-      return true;
+      const result = await client.query(query, values);
+      return result.rows[0]
     } catch (e) {
       console.log(e);
       throw new InternalServerError('Service temporarily unavailable');
@@ -135,11 +170,11 @@ class AccountTable extends PostgresDB {
     try {
       const client = await this.pool.connect();
       const query = `          
-      SELECT type,total_value as value, transactions.created_at as date, destiny_account = $1 as receive_transfer, destiny_account, account as origin_account 
+      SELECT type,total_value as value, tax, transactions.created_at as date, destiny_account = $1 as receive_transfer, destiny_account, account as origin_account 
         FROM transactions
         LEFT JOIN accounts ON accounts.id = $1
         WHERE account = $1 or destiny_account = $1
-        ORDER BY transactions.created_at;
+        ORDER BY transactions.created_at DESC;
       `;
       const values = [accountId];
       const result = await client.query(query, values);

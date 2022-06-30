@@ -19,13 +19,19 @@ export default class CreateTransfer {
     if(!destinyId){
       throw new BadRequest("Destiny account don't exist")
     }
-    const totalValue = params.value - this.tax;
+    const totalValue = params.value + this.tax;
     const transfer: ITransaction = this.buildTransfer(originId, destinyId, totalValue, params.value);
 
-    await new AccountTable().deposit(destinyId, totalValue);
-    await new AccountTable().draft(originId, params.value);
-    await new TransactionTable().insert(transfer);
-    return transfer;
+    const destinyResult = await new AccountTable().deposit(destinyId, totalValue);
+    destinyResult.cpf = params.destiny_account.cpf
+    const originResult = await new AccountTable().draft(originId, params.value);
+    originResult.cpf = params.origin_account.cpf
+    const transaction = await new TransactionTable().insert(transfer);
+    return {
+      destiny_account: destinyResult,
+      origin_account: originResult,
+      transaction: transaction
+    };
   }
   private buildTransfer(originId: string, destinyId: string, totalValue: number, value: number):ITransaction {
     return {

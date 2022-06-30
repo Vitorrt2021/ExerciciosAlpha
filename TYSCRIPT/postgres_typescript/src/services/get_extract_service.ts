@@ -10,11 +10,10 @@ export default class GetExtract {
     if(!accountId) throw new BadRequest("Account don't exist")
     
     const extract = await new AccountTable().extract(accountId);
-    const balance_available = await new AccountTable().getBalance(accountId);
-    console.log(extract)
+    const account =  await new AccountTable().get(accountId);
     const transactions = await this.extractTreatment(extract)
     return {
-      balance_available,
+      account: account,
       'transactions': transactions
     };
   }
@@ -30,6 +29,7 @@ export default class GetExtract {
           type: transaction.type,
           value: transaction.value,
           date: transaction.date,
+          tax:transaction.tax ,
           origin: origin
         })
       }else if(!transaction.receive_transfer && transaction.type === 'transfer'){
@@ -38,12 +38,14 @@ export default class GetExtract {
           type: transaction.type,
           value: transaction.value,
           date: transaction.date,
+          tax:transaction.tax ,
           destiny: destiny 
         })
       }else{
         result.push({
           type: transaction.type,
           value: transaction.value,
+          tax:transaction.tax ,
           date: transaction.date,
         })
       }

@@ -14,9 +14,15 @@ export default class ValidateDeposit {
     }
     const { account } = params;
     const accountId = await new AccountTable().find(account);
-    if (!accountId) {
+     if (!accountId) {
       throw new BadRequest("Account don't exist");
     }
+    const ownerCpf = await new AccountTable().isOwner(accountId)
+    const isOwner = ownerCpf[0]?.cpf === account.cpf
+    if (!isOwner) {
+      throw new BadRequest("Account is not yours");
+    }
+
   }
   
   private validateValue(params: DepositRequest):void {

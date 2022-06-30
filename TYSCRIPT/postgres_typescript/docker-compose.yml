@@ -21,6 +21,7 @@ services:
       - type: bind
         source: ./src  
         target: /usr/bank/src
+        
   db_bank:
     build: ./docker/db/
     restart: always

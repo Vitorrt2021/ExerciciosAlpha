@@ -27,6 +27,11 @@ export default class ValidateDraft {
     if (!accountId) {
       throw new BadRequest("Account don't exist");
     }
+    const ownerCpf = await new AccountTable().isOwner(accountId)
+    const isOwner = ownerCpf[0]?.cpf === account.cpf
+    if (!isOwner) {
+      throw new BadRequest("Account is not yours");
+    }
   }
 
   private validateValue(params: DraftRequest):void {
@@ -51,7 +56,8 @@ export default class ValidateDraft {
 
   private async haveEnoughMoney(accountId: string,params: DraftRequest): Promise<void> {
     const money = await new AccountTable().getBalance(accountId);
-    if (money < params.value) {
+    const tax = 4
+    if (money < params.value + tax) {
       throw new BadRequest('Insufficient funds');
     }
   }

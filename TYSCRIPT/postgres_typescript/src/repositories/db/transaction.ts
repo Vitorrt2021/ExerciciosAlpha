@@ -9,11 +9,11 @@ class TransactionTable extends PostgresDB {
       const query = `          
         INSERT INTO transactions (id,account,destiny_account,value,type,tax,total_value)
         VALUES($1,$2,$3,$4,$5,$6,$7)
-        RETURNING id;
+        RETURNING *;
       `;
       const values = [transaction.id, transaction.account, transaction.destiny_account, transaction.value, transaction.type, transaction.tax, transaction.total_value];
-      await client.query(query, values);
-      return true;
+      const result = await client.query(query, values);
+      return result.rows[0];
     } catch (e) {
       console.log(e);
       throw new InternalServerError('Service temporarily unavailable');

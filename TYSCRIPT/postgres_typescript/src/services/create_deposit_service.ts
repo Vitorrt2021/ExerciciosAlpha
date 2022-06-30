@@ -8,8 +8,7 @@ import { BadRequest } from '../error/errors';
 export default class CreateDeposit {
   public async execute(params: DepositRequest) {
     await new ValidateDeposit().execute(params);
-
-    
+  
     const accountId = await new AccountTable().find(params.account);
     if(!accountId){
       throw new BadRequest("Account don't exist")
@@ -20,9 +19,12 @@ export default class CreateDeposit {
     const totalValue = value - tax;
     const deposit: ITransaction = this.buildDeposit(accountId, value, totalValue, tax)
 
-    await new AccountTable().deposit(accountId, totalValue)
-    await new TransactionTable().insert(deposit)
-    return deposit;
+    const account = await new AccountTable().deposit(accountId, totalValue)
+    const depositResult = await new TransactionTable().insert(deposit)
+    return {
+      deposit: depositResult,
+      account: account
+    };
   }
   
   private buildDeposit(accountId: string, value: number, totalValue: number, tax: number): ITransaction{

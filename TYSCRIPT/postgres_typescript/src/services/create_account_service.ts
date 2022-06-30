@@ -5,13 +5,14 @@ import ValidateAccount from '../validator/account_validate';
 import AccountTable from '../repositories/db/account';
 import AccountRequest from '../model/account_request_model';
 import IAccount from '../model/account_model';
+import CreateAccountResponse from '../model/create_account_response_model';
 const bcrypt = require('bcrypt');
 
-export default class CreateAccount {
-  async execute(params: AccountRequest): Promise<IAccount> {
+export default class CreateAccount{
+  async execute(params: AccountRequest): Promise<CreateAccountResponse> {
     const userId: string = await new CreateUser().execute(params);
     const account:IAccount = await this.createAccount(userId, params);    
-    return account;
+    return {user: params, account: account};
   }
 
   async createAccount(userId: string, params: AccountRequest): Promise<IAccount> { 

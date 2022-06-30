@@ -19,10 +19,13 @@ export default class CreateDraft {
     const totalValue = value - this.tax;
     const draft: ITransaction = this.buildDraft(accountId, totalValue, value);
 
-    await new AccountTable().draft(accountId, totalValue);
-    await new TransactionTable().insert(draft);
-
-    return draft;
+    const accountResult = await new AccountTable().draft(accountId, value + this.tax);
+    const transactionResult = await new TransactionTable().insert(draft);
+    
+    return {
+      account: accountResult,
+      draft: transactionResult
+    };
   }
 
 

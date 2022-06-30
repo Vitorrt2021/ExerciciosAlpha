@@ -2,8 +2,8 @@ import { BadRequest } from '../error/errors';
 import AccountRequest from '../model/account_request_model';
 class ValidateUser {
   public execute(params: AccountRequest): boolean {
+    this.nameValidate(params); 
     this.cpfValidate(params);
-    this.nameValidate(params);
     this.dateOfBirthValidate(params);
 
     return true;

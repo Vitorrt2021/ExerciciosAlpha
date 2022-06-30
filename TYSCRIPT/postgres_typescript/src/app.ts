@@ -4,8 +4,8 @@ import express, {
 } from 'express';
 import accountRouter from './routes/account_route';
 import transactionsRouter from './routes/transactions_route';
-import IResponse from './model/response_model';
 import IApiError from './model/api_error_model';
+import IResponse from './model/response_model';
 
 const app: Express = express();
 app.use(express.urlencoded({ extended: false }));

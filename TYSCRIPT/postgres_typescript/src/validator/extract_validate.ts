@@ -10,8 +10,7 @@ export default class ValidateExtract {
     if(!accountId){
       throw new BadRequest("Account don't exist")
     }
-    await this.validatePassword(accountId, params);
-
+   
     return true;
   }
 
@@ -24,16 +23,10 @@ export default class ValidateExtract {
     if (!accountId) {
       throw new BadRequest("Account don't exist");
     }
-  }
-
-  private async validatePassword(accountId: string, params: ExtractRequest): Promise<void> {
-    if (!('password' in params.account)) {
-      throw new BadRequest('Account password is required');
-    }
-    const passwordHash = await new AccountTable().getPassword(accountId);
-    const passwordIsCorrect = bcrypt.compareSync(params.account.password, passwordHash);
-    if (!passwordIsCorrect) {
-      throw new BadRequest('Wrong password');
+    const ownerCpf = await new AccountTable().isOwner(accountId)
+    const isOwner = ownerCpf[0]?.cpf === account.cpf
+    if (!isOwner) {
+      throw new BadRequest("Account is not yours");
     }
   }
 }

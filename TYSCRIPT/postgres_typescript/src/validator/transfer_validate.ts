@@ -21,6 +21,15 @@ export default class ValidateTransfer {
     if (!originId) {
       throw new BadRequest("Origin account don't exist");
     }
+    const {origin_account} = params
+    if(!('cpf' in origin_account)){
+      throw new BadRequest("Origin account cpf is required");  
+    }
+    const ownerCpf = await new AccountTable().isOwner(originId)
+    const isOwner = ownerCpf[0]?.cpf === origin_account.cpf
+    if (!isOwner) {
+      throw new BadRequest("Origin account is not yours");
+    }
     return originId;
   }
 
@@ -31,6 +40,15 @@ export default class ValidateTransfer {
     const destinyId = await new AccountTable().find(params.destiny_account);
     if (!destinyId) {
       throw new BadRequest("Destiny account don't exist");
+    }
+    const {destiny_account} = params
+    if(!('cpf' in destiny_account)){
+      throw new BadRequest("Destiny account cpf is required");  
+    }
+    const ownerCpf = await new AccountTable().isOwner(destinyId)
+    const isOwner = ownerCpf[0]?.cpf === destiny_account.cpf
+    if (!isOwner) {
+      throw new BadRequest("Destiny account have wrong cpf yours");
     }
   }
 
@@ -62,7 +80,8 @@ export default class ValidateTransfer {
 
   private async haveEnoughMoney(accountId: string, value: number): Promise<void> {
     const money = await new AccountTable().getBalance(accountId);
-    if (money < value) {
+    const tax = 1
+    if (money < value + tax) {
       throw new BadRequest('Insufficient funds');
     }
   }
