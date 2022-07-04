@@ -6,13 +6,17 @@ import AccountTable from '../repositories/db/account';
 import AccountRequest from '../model/account_request_model';
 import IAccount from '../model/account_model';
 import CreateAccountResponse from '../model/create_account_response_model';
+import { Result } from '../utils/result';
 const bcrypt = require('bcrypt');
 
 export default class CreateAccount{
-  async execute(params: AccountRequest): Promise<CreateAccountResponse> {
-    const userId: string = await new CreateUser().execute(params);
-    const account:IAccount = await this.createAccount(userId, params);    
-    return {user: params, account: account};
+  async execute(params: AccountRequest): Promise<Result<CreateAccountResponse>> {
+    const userId: Result<string> = await new CreateUser().execute(params);
+    if(userId.isFailure){
+      return Result.fail<CreateAccountResponse>(userId.error)
+    }
+    const account:IAccount = await this.createAccount(userId.getValue(), params);    
+    return Result.ok<CreateAccountResponse>({user: params, account: account});
   }
 
   async createAccount(userId: string, params: AccountRequest): Promise<IAccount> { 

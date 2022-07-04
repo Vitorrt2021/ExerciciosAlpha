@@ -1,9 +1,10 @@
 import PostgresDB from './index';
 import IUser from '../../model/user_model';
-import { InternalServerError } from '../../error/errors';
+import { Result } from '../../utils/result';
+import { BadRequest, InternalServerError } from '../../error/errors';
 
 class UserTable extends PostgresDB {
-  public async insert(user: IUser): Promise<boolean> {
+  public async insert(user: IUser): Promise<Result<boolean>> {
     try {
       const client = await this.pool.connect();
       const query = `
@@ -12,29 +13,31 @@ class UserTable extends PostgresDB {
               RETURNING id;
           `;
       await client.query(query, [user.id, user.name, user.birthdate, user.cpf]);
-      return true;
+      return Result.ok();
     } catch (e) {
       console.log(e);
-      throw new InternalServerError('Service temporarily unavailable');
+      return Result.fail<boolean>(new InternalServerError('Service temporarily unavailable'));
     }
   }
   
-  public async findByCpf(cpf: string){
-    const client = await this.pool.connect();
-    const query = `
-            SELECT id
-            FROM users
-            WHERE cpf = $1
-        `;
+  public async findByCpf(cpf: string): Promise<Result<string>>{
+    try{
+      const client = await this.pool.connect();
+      const query = `
+              SELECT id
+              FROM users
+              WHERE cpf = $1
+          `;
 
-    const result = await client.query(query, [cpf]);
-    if(result.rows.length !== 0){
-      return result.rows[0].id 
+      const result = await client.query(query, [cpf]);
+      if(result.rows.length !== 0){
+        return Result.ok<string>(result.rows[0].id) 
+      }
+      return Result.fail<string>(new BadRequest("User don't exist"))
+    } catch (e: any) {
+      console.log(e);
+      return Result.fail<string>(new InternalServerError('Service temporarily unavailable'));
     }
-    return null
-  } catch (e: Error) {
-    console.log(e);
-    throw new InternalServerError('Service temporarily unavailable');
   }
 }
 export default UserTable;

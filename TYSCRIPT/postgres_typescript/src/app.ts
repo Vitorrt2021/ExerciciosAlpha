@@ -22,7 +22,6 @@ app.use((err: IApiError, req: Request, res: Response, next: NextFunction) => {
       status: err.status,
     } as IResponse);
   } else {
-    console.log(err)
     res.status(500).send({
       data: 'InternalServerError',
       message: 'Something when wrong',
