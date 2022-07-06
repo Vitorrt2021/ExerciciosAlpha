@@ -5,26 +5,38 @@ import ValidateDeposit from '../validator/deposit_validate';
 import TransactionTable from '../repositories/db/transaction';
 import DepositRequest from '../model/deposit_request_model';
 import { BadRequest } from '../error/errors';
+import { Result } from '../utils/result';
+import IAccount from '../model/account_model';
+import DepositResponse from '../model/deposit_response_model';
+
 export default class CreateDeposit {
-  public async execute(params: DepositRequest) {
+  public async execute(params: DepositRequest) : Promise<Result<DepositResponse>>{
     await new ValidateDeposit().execute(params);
   
     const accountId = await new AccountTable().find(params.account);
-    if(!accountId){
-      throw new BadRequest("Account don't exist")
+    if(accountId.isFailure){
+      return Result.fail(new BadRequest("Account don't exist"))
     }
 
     const {value} = params
     const tax = this.calculateTax(value);
     const totalValue = value - tax;
-    const deposit: ITransaction = this.buildDeposit(accountId, value, totalValue, tax)
+    const deposit: ITransaction = this.buildDeposit(accountId.getValue(), value, totalValue, tax)
 
-    const account = await new AccountTable().deposit(accountId, totalValue)
+    const account = await new AccountTable().deposit(accountId.getValue(), totalValue)
+    if(account.isFailure){
+      return Result.fail(account.error)
+    }
+    
     const depositResult = await new TransactionTable().insert(deposit)
-    return {
-      deposit: depositResult,
-      account: account
-    };
+    if(depositResult.isFailure){
+      return Result.fail(depositResult.error)
+    }
+
+    return Result.ok({
+      deposit: depositResult.getValue(),
+      account: account.getValue()
+    });
   }
   
   private buildDeposit(accountId: string, value: number, totalValue: number, tax: number): ITransaction{

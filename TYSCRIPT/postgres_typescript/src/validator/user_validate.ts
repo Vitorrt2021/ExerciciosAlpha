@@ -11,7 +11,6 @@ class ValidateUser{
     if(cpfValidate.isFailure){
       return Result.fail<boolean>(cpfValidate.error)
     }
-
     const dateValidate = this.dateOfBirthValidate(params);
     if(dateValidate.isFailure){
       return Result.fail<boolean>(dateValidate.error)

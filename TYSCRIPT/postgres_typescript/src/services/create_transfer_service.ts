@@ -4,34 +4,46 @@ import TransactionTable from '../repositories/db/transaction';
 import AccountTable from '../repositories/db/account';
 import ITransaction from '../model/transaction_model';
 import TransferRequest from '../model/transfer_request_model';
-import { BadRequest } from '../error/errors';
+import { Result } from '../utils/result';
+import TransferResponse from '../model/transfer_response_model';
 export default class CreateTransfer {
   private tax = 1;
 
-  async execute(params: TransferRequest) {
+  async execute(params: TransferRequest): Promise<Result<TransferResponse>> {
     await new ValidateTransfer().execute(params);
 
-    const originId = await new AccountTable().find(params.origin_account);
-    const destinyId = await new AccountTable().find(params.destiny_account);
-    if(!originId){
-      throw new BadRequest("Origin account don't exist")
+    const originId: Result<string> = await new AccountTable().find(params.origin_account);
+    const destinyId: Result<string> = await new AccountTable().find(params.destiny_account);
+    if(originId.isFailure){
+      return Result.fail<TransferResponse>(originId.error)
     }
-    if(!destinyId){
-      throw new BadRequest("Destiny account don't exist")
+    if(destinyId.isFailure){
+      return Result.fail<TransferResponse>(destinyId.error)
     }
     const totalValue = params.value + this.tax;
-    const transfer: ITransaction = this.buildTransfer(originId, destinyId, totalValue, params.value);
+    const transfer: ITransaction = this.buildTransfer(originId.getValue(), destinyId.getValue(), totalValue, params.value);
 
-    const destinyResult = await new AccountTable().deposit(destinyId, totalValue);
-    destinyResult.cpf = params.destiny_account.cpf
-    const originResult = await new AccountTable().draft(originId, params.value);
-    originResult.cpf = params.origin_account.cpf
-    const transaction = await new TransactionTable().insert(transfer);
-    return {
-      destiny_account: destinyResult,
-      origin_account: originResult,
-      transaction: transaction
-    };
+    const destinyResult = await new AccountTable().deposit(destinyId.getValue(), totalValue);
+    if(destinyResult.isFailure){
+      return Result.fail(destinyResult.error)
+    }
+    const destiny = destinyResult.getValue()
+    destiny.cpf = params.destiny_account.cpf
+    const originResult = await new AccountTable().draft(originId.getValue(), params.value);
+    if(originResult.isFailure){
+      return Result.fail(originResult.error)
+    }
+    const origin = originResult.getValue()
+    origin.cpf = params.origin_account.cpf
+    const transaction: Result<ITransaction> = await new TransactionTable().insert(transfer);
+    if(transaction.isFailure){
+      return Result.fail<TransferResponse>(transaction.error)
+    }
+    return Result.ok<TransferResponse>({
+      destiny_account: destiny,
+      origin_account: origin,
+      transaction: transaction.getValue()
+    });
   }
   private buildTransfer(originId: string, destinyId: string, totalValue: number, value: number):ITransaction {
     return {

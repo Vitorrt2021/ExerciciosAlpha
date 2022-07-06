@@ -2,7 +2,7 @@ import PostgresDB from './index';
 import { BadRequest, InternalServerError } from '../../error/errors';
 import IAccount from '../../model/account_model';
 import ExtractQuery from '../../model/extract_query_model';
-
+import { Result } from '../../utils/result';
 class AccountTable extends PostgresDB {
   public async insert(account: IAccount): Promise<boolean> {
     try {
@@ -21,7 +21,7 @@ class AccountTable extends PostgresDB {
     }
   }
 
-  public async get(accountId: string): Promise<Array<any>> {
+  public async get(accountId: string): Promise<Result<any> | undefined> {
     try {
       const client = await this.pool.connect();
       const query = `          
@@ -30,14 +30,18 @@ class AccountTable extends PostgresDB {
           `;
       const values = [accountId];
       const result = await client.query(query, values);
-      return result.rows[0];
+      
+      if(!result.rows[0]){      
+        return Result.fail(new BadRequest("Account don't exist"));
+      }
+      return Result.ok(result.rows[0]);
     } catch (e) {
       console.log(e);
-      throw new InternalServerError('Service temporarily unavailable');
+      Result.fail(new InternalServerError('Service temporarily unavailable'))
     }
   }
 
-  public async isOwner(accountId: string): Promise<Array<any>> {
+  public async isOwner(accountId: string): Promise<Result<Array<any>>> {
     try {
       const client = await this.pool.connect();
       const query = `          
@@ -47,10 +51,10 @@ class AccountTable extends PostgresDB {
           `;
       const values = [accountId];
       const result = await client.query(query, values);
-      return result.rows;
+      return Result.ok(result.rows);
     } catch (e) {
       console.log(e);
-      throw new InternalServerError('Service temporarily unavailable');
+      return Result.fail(new InternalServerError('Service temporarily unavailable'))
     }
   }
 
@@ -74,7 +78,7 @@ class AccountTable extends PostgresDB {
     }
   } 
 
-  public async deposit(accountId: string, value: number): Promise<any> {
+  public async deposit(accountId: string, value: number): Promise<Result<any>> {
     try {
       const client = await this.pool.connect();
       const query = `                       
@@ -85,14 +89,14 @@ class AccountTable extends PostgresDB {
           `;
       const values = [accountId, value];
       const result = await client.query(query, values);
-      return result.rows[0];
+      return Result.ok(result.rows[0])
     } catch (e) {
       console.log(e);
-      throw new InternalServerError('Service temporarily unavailable');
+      return Result.fail(new InternalServerError('Service temporarily unavailable'));
     }
   }
 
-  public async draft(accountId: string, value: number): Promise<any> {
+  public async draft(accountId: string, value: number): Promise<Result<any>> {
     try {
       const client = await this.pool.connect();
       const query = `                       
@@ -103,10 +107,10 @@ class AccountTable extends PostgresDB {
           `;
       const values = [accountId, value];
       const result = await client.query(query, values);
-      return result.rows[0]
+      return Result.ok(result.rows[0])
     } catch (e) {
       console.log(e);
-      throw new InternalServerError('Service temporarily unavailable');
+      return Result.fail(new InternalServerError('Service temporarily unavailable'));
     }
   }
 
@@ -128,7 +132,7 @@ class AccountTable extends PostgresDB {
     }
   }
 
-  public async find(account: IAccount): Promise<string | null> {
+  public async find(account: IAccount): Promise<Result<string>> {
     try {
       const client = await this.pool.connect();
       const query = `          
@@ -139,11 +143,12 @@ class AccountTable extends PostgresDB {
       const values = [account.agency_number, account.agency_verification_code, account.account_number, account.account_verification_code];
       const result = await client.query(query, values);
       if (result.rows.length == 0) {
-        return null;
+        return Result.fail(new BadRequest("Account don't exist"));
       }
-      return result.rows[0].id;
+      return Result.ok(result.rows[0].id);
     } catch (e) {
-      throw new InternalServerError('Service temporarily unavailable');
+      console.log(e)
+      return Result.fail<string>(new InternalServerError('Service temporarily unavailable'))
     }
   }
   

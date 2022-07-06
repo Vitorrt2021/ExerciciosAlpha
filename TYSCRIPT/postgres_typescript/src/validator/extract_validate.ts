@@ -1,6 +1,7 @@
 import { BadRequest } from '../error/errors';
 import AccountTable from '../repositories/db/account';
 import ExtractRequest from '../model/extract_request_mode';
+import { Result } from '../utils/result';
 const bcrypt = require('bcrypt');
 
 export default class ValidateExtract {
@@ -20,13 +21,17 @@ export default class ValidateExtract {
     }
     const { account } = params;
     const accountId = await new AccountTable().find(account);
-    if (!accountId) {
-      throw new BadRequest("Account don't exist");
+    if (accountId.isFailure) {
+      return Result.fail(accountId.error)
     }
-    const ownerCpf = await new AccountTable().isOwner(accountId)
-    const isOwner = ownerCpf[0]?.cpf === account.cpf
+    const ownerCpf = await new AccountTable().isOwner(accountId.getValue())
+    if (ownerCpf.isFailure) {
+      return Result.fail(ownerCpf.error)
+    }
+    const isOwner = ownerCpf.getValue()[0]?.cpf === account.cpf
     if (!isOwner) {
-      throw new BadRequest("Account is not yours");
+    
+      return Result.fail(new BadRequest("Account is not yours"))
     }
   }
 }

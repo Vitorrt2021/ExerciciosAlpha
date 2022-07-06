@@ -16,12 +16,15 @@ app.use(transactionsRouter);
 
 app.use((err: IApiError, req: Request, res: Response, next: NextFunction) => {
   if (err && err.status) {
+    
+    console.log(err)
     res.status(err.status).send({
       data: err.name,
       message: err.message,
       status: err.status,
     } as IResponse);
   } else {
+    console.log(err)
     res.status(500).send({
       data: 'InternalServerError',
       message: 'Something when wrong',
